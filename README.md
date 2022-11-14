@@ -33,8 +33,8 @@ https://docs.google.com/spreadsheets/d/1Dplg45OdAWnwA3Q4DicvMR_th0TeC_sPTAxgIeVe
 https://www.figma.com/file/cSqLa46wTlUkerUtXOBA0f/Untitled?node-id=0%3A1&t=UoaGCX4zWbPLfwvl-1
 
 ## ER図
-![スクリーンショット 2022-11-13 16 48 13](https://user-images.githubusercontent.com/109142010/201511607-79cc44ba-c231-483f-9f4b-7c535dfc28ba.png)
 
+![スクリーンショット 2022-11-14 14 41 37](https://user-images.githubusercontent.com/109142010/201584169-6db52d33-4090-4a75-a5ac-6e7af1836973.png)
 
 
 
