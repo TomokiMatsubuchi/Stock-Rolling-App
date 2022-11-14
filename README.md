@@ -34,7 +34,7 @@ https://www.figma.com/file/cSqLa46wTlUkerUtXOBA0f/Untitled?node-id=0%3A1&t=UoaGC
 
 ## ER図
 
-![スクリーンショット 2022-11-14 14 41 37](https://user-images.githubusercontent.com/109142010/201584169-6db52d33-4090-4a75-a5ac-6e7af1836973.png)
+![スクリーンショット 2022-11-14 22 47 17](https://user-images.githubusercontent.com/109142010/201676282-d05407e8-6055-48dd-ac49-f2ca9261a49b.png)
 
 
 
