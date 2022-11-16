@@ -1,0 +1,46 @@
+<% if expendable_item.errors.any? %>
+    <div id="error_explanation" class = "alert alert-danger">
+      <ul>
+        <% expendable_item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<%= form_with(model: expendable_item, local:true) do |form| %>
+  <div>
+    <%= form.label :name, '商品名' %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :amount_of_product, '内容量' %>
+    <%= form.text_field :amount_of_product %>
+  </div>
+  <div>
+    <%= form.label :amount_to_use, '1回で使用する量' %>
+    <%= form.text_field :amount_to_use %>
+  </div>
+  <div>
+    <%= form.label :frequency_of_use, '使用頻度' %>
+    <p>(1日に何回使用するか)</p>
+    <%= form.text_field :frequency_of_use %>
+  </div>
+  <div>
+    <%= form.label :image, '商品画像' %>
+    <%= form.file_field :image %>
+  </div>
+  <div>
+    <%= form.label :auto_buy, '自動購入' %>
+    <%= form.check_box :auto_buy, {}, "する", "しない" %>
+  </div>
+  <div>
+    <%= form.label :product_url, '購入先URL' %>
+    <%= form.text_field :product_url %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<div>
+  <%= link_to 'お買物ページ一覧へ', expendable_items_path %>
+</div>
