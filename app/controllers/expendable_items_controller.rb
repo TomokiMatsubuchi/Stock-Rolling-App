@@ -11,9 +11,9 @@ class ExpendableItemsController < ApplicationController
     @expendable_item = ExpendableItem.new(expendable_item_params)
     #@expendable_item.user_id = current_user.id
     if @expendable_item.save
-      day_of_frequency = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
-      deadline_on = @expendable_item.created_at.since(day_of_frequency.days)
-      @expendable_item.update(deadline_on: deadline_on)
+      amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
+      deadline = @expendable_item.created_at.since(amount_of_day.days)
+      @expendable_item.update(deadline_on: deadline)
       flash[:notice] = '消耗品の新規登録が完了しました!'
       redirect_to expendable_items_path
     else
@@ -32,9 +32,9 @@ class ExpendableItemsController < ApplicationController
   def update
     @expendable_item = ExpendableItem.find(params[:id])
     if @expendable_item.update(expendable_item_params)
-      day_of_frequency = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
-      deadline_on = @expendable_item.created_at.since(day_of_frequency.days)
-      @expendable_item.update(deadline_on: deadline_on)
+      amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
+      deadline = @expendable_item.created_at.since(amount_of_day.days)
+      @expendable_item.update(deadline_on: deadline)
       flash[:notiece] = '消耗品情報を更新しました!'
       redirect_to expendable_items_path
     else
