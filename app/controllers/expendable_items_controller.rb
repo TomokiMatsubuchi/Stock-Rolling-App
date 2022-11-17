@@ -9,7 +9,7 @@ class ExpendableItemsController < ApplicationController
 
   def create
     @expendable_item = ExpendableItem.new(expendable_item_params)
-    #@expendable_item.user_id = current_user.id
+    @expendable_item.user_id = current_user.id
     if @expendable_item.save
       amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
       deadline = @expendable_item.created_at.since(amount_of_day.days)

@@ -7,4 +7,5 @@ class ExpendableItem < ApplicationRecord
   validates :auto_buy, inclusion: {in: ["する", "しない"]}
 
   has_one_attached :image
+  belongs_to :user
 end
