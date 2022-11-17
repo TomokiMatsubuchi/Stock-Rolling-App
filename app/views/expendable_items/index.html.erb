@@ -1,32 +1,31 @@
 <h1>お買物一覧</h1>
 
-<% if @expendable_items.present? %>
-  <% @expendable_items.each do |item| %>
-    <div>
-      <p>
-        <%= image_tag item.image.variant(resize_to_limit: [100, 100]) if item.image.present? %>
-      </p>
-      <p>
-        <strong>商品名:</strong>
-        <%= item.name %>
-      </p>
-      <p>
-        <strong>内容量:</strong>
-        <%= item.amount_of_product %>
-      </p>
-      <p>
-        消費完了まであと
-        <strong>
-          <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
-        </strong>
-        日
-      </p>
-      <p>
-        <%= link_to '編集', edit_expendable_item_path(item.id) %>
-      </p>
-      <p>
-        <%= link_to '削除', expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
-      </p>
-    </div>
-  <% end %>
+
+<% @expendable_items.each do |item| %>
+  <div>
+    <p>
+      <%= image_tag item.image.variant(resize_to_limit: [100, 100]) if item.image.present? %>
+    </p>
+    <p>
+      <strong>商品名:</strong>
+      <%= item.name %>
+    </p>
+    <p>
+      <strong>内容量:</strong>
+      <%= item.amount_of_product %>
+    </p>
+    <p>
+      消費完了まであと
+      <strong>
+        <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
+      </strong>
+      日
+    </p>
+    <p>
+      <%= link_to '詳細', expendable_item_path(item.id) %>
+    </p>
+    <p>
+      <%= link_to '削除', expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
+    </p>
+  </div>
 <% end %>

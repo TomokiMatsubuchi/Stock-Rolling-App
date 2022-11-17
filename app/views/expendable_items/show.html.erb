@@ -1,0 +1,35 @@
+<h1><%= @expendable_item.name %>詳細ページ</h1>
+<div>
+  <p>
+    <%= image_tag @expendable_item.image.variant(resize_to_limit: [100, 100]) if @expendable_item.image.present? %>
+  </p>
+  <p>
+    <strong>商品名</strong>
+    <%= @expendable_item.name %>
+  </p>
+  <p>
+    <strong>内容量</strong>
+    <%= @expendable_item.amount_of_product %>
+  </p>
+  <p>
+    <strong>1回で使用する量</strong>
+    <%= @expendable_item.amount_to_use %>
+  </p>
+  <p>
+    <strong>使用頻度</strong>(1日に何回使用するか)
+    <%= @expendable_item.frequency_of_use %>
+  </p>
+  <p>
+    <strong>自動購入</strong>
+    <%= @expendable_item.auto_buy %>
+  </p>
+  <p>
+    <%= link_to '商品情報の編集', edit_expendable_item_path(@expendable_item.id) %>
+  </p>
+  <p>
+    <%= link_to '商品情報の削除', expendable_item_path(@expendable_item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
+  </p>
+</div>
+<div>
+  <%= link_to 'お買物ページ一覧へ', expendable_items_path %>
+</div>
