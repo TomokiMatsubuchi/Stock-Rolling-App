@@ -5,4 +5,6 @@ class ExpendableItem < ApplicationRecord
   validates :frequency_of_use, presence: true
   enum auto_buy: {"する": true, "しない": false}
   validates :auto_buy, inclusion: {in: ["する", "しない"]}
+
+  has_one_attached :image
 end
