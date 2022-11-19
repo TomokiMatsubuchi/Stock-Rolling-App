@@ -28,11 +28,22 @@ gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+#ログイン機能
 gem 'devise'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
+
+#環境変数の設定
 gem 'dotenv-rails'
 
+#LINEチャット機能
+gem 'line-bot-api'
+
+#非同期処理でsidekiqの導入
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+
+gem 'nokogiri', '1.13.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
