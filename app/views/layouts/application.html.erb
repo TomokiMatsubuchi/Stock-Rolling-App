@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StockRollingApp</title>
+    <title>Sampleapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,17 @@
 
   <body>
     <ul>
-      <li><%= link_to '新規消耗品登録はこちら', new_expendable_item_path %></li>
+      <% if user_signed_in? %>
+        <% if user_admin? %>
+          <li><%= link_to '管理者用ページ', admin_users_path %></li>
+        <% end %>
+        <li><%= link_to 'お買い物メモ', expendable_items_path %></li>
+        <li><%= link_to '新規消耗品登録', new_expendable_item_path %></li>
+        <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
+        <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'ログインはこちら', new_user_session_path %></li>
+      <% end %>
     </ul>
     <%= yield %>
   </body>

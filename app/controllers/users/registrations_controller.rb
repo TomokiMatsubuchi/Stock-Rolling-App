@@ -25,9 +25,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    current_user.destroy
+    flash[:notice] = 'アカウントを削除しました。'
+    redirect_to root_path
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -38,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  #protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

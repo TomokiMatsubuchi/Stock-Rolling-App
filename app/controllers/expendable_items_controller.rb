@@ -1,6 +1,9 @@
 class ExpendableItemsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user_expendable_item, only: [:show, :edit, :update, :destroy]
+
   def index
-    @expendable_items = ExpendableItem.all
+    @expendable_items = current_user.expendable_items.order("deadline_on ASC")
   end
 
   def new
@@ -53,5 +56,12 @@ class ExpendableItemsController < ApplicationController
 
   def expendable_item_params
     params.require(:expendable_item).permit(:name, :amount_of_product, :deadline_on, :image, :amount_to_use, :frequency_of_use, :product_url, :auto_buy)
+  end
+
+  def correct_user_expendable_item
+    @expendable_item = ExpendableItem.find(params[:id])
+    user = User.find(@expendable_item.user_id)
+    return if user_admin?
+    redirect_to expendable_items_path, flash: {notice: "本人以外アクセスできません"} unless current_user?(user)
   end
 end
