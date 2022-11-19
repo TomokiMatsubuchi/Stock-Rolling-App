@@ -44,6 +44,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
 gem 'nokogiri', '1.13.1'
+gem 'mini_portile2', '~> 2.7.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
