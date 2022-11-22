@@ -8,33 +8,17 @@ class PushLineJob < ApplicationJob
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
-
-
-
-    message = {
-          type: 'text',
-          text: "テストです。"
+    
+    limit_seven_days = Date.today..Time.now.end_of_day + (7.days)
+    users = User.all
+    users.each do |user|
+      limit_items =  ExpendableItem.where(user_id: user.id).where(deadline_on: limit_seven_days)
+      names = limit_items.map {|item| item.name } 
+      message = {
+            type: 'text',
+            text: "1週間以内に#{names.join(',')}が無くなります。早めの買い足しをオススメします。"
           }
-          response = client.push_message(User.find(1).uid, message)
-
-
-    #near_limit_items = ExpendableItem.where(deadline_on: Date.today..Time.now.end_of_day + (2.days))
-    #near_limit_items.each do |item|
-    #  @user = item.user
-    #  limit_message = {
-    #    type: 'text',
-    #    text: "#{item.name}の消費完了が近づいています。"
-    #    }
-    #    limit_response = client.push_message(@user.uid, limit_message)
-    #end
-#
-    #other_limit_items = ExpendableItem.where(deadline_on: Date.today..Time.now.end_of_day + (5.days), user_id: @user).where.not(deadline_on: Date.today..Time.now.end_of_day + (2.days))
-    #  other_limit_items.each do |oth|
-    #    oth_message = {
-    #      type: 'text',
-    #      text: "他にも#{oth.name}の消費完了が近いです。"
-    #    }
-    #    oth_response = client.push_message(@user.uid, oth_message)
-    #  end
+        response = client.push_message(user.uid, message)
+    end
   end
 end

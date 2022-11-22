@@ -21,8 +21,10 @@ services:
       - db
       - redis
       - sidekiq
+      - chrome
     environment:
       REDIS_URL: redis://redis:6379
+      CHROME_URL: chrome://chrome:4444
   redis:
       image: "redis:latest"
       command: redis-server --appendonly yes
@@ -41,6 +43,13 @@ services:
     depends_on:
       - redis
       - db
+    tty: true
+  chrome:
+    image: seleniarm/standalone-chromium
+    ports:
+      - 4444:4444
+      - 7900:7900
+    shm_size: "2gb"
     tty: true
 volumes:
   bundle_data:
