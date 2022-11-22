@@ -13,8 +13,6 @@ COPY Gemfile* /myapp/
 RUN bundle config set force_ruby_platform true
 RUN bundle install
 
-
-
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
