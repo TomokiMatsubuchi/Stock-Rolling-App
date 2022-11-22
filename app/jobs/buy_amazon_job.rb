@@ -1,4 +1,4 @@
-
+require "selenium-webdriver"
 
 
 class BuyAmazonJob < ApplicationJob
