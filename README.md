@@ -13,14 +13,15 @@
 - LINE BOT 連携
 - API(Amazon or 楽天 or yahoo)
 - seleniumによるwebスクレイピングを使った自動購入機能
+- Docker
 
 ## 実行手順
 ```
 $ git clone git@github.com:TomokiMatsubuchi/Stock-Rolling-App.git
 $ cd Stock-Rolling-App
-$ bundle install
-$ rails db:create && rails db:migrate
-$ rails s
+$ bundle install && bundle update
+$ docker-compose build --no-cache
+$ docker-compose up
 ```
 
 ## カタログ設計
