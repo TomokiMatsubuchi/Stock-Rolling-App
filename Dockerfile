@@ -11,6 +11,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get instal
 # install yarn
 RUN npm install --global yarn
 
+
+COPY . /myapp
+
 # gem
 COPY ./Gemfile /myapp
 COPY ./Gemfile.lock /myapp
