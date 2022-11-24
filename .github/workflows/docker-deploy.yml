@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 env:
-  ECR_REGISTRY: 805641289223.dkr.ecr.ap-northeast-1.amazonaws.com/stock-rolling-app
+  ECR_REGISTRY: 805641289223.dkr.ecr.ap-northeast-1.amazonaws.com
   ECR_REPOSITORY: stock-rolling-app
 jobs:
 
