@@ -12,9 +12,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get instal
 RUN npm install --global yarn
 
 # gem
-#COPY ./Gemfile /myapp
-#COPY ./Gemfile.lock /myapp
-COPY Gemfile* /myapp/
+COPY ./Gemfile /myapp
+COPY ./Gemfile.lock /myapp
+#COPY Gemfile* /myapp/
 RUN gem install bundler
 RUN bundle config set --local disable_checksum_validation true
 RUN bundle config set force_ruby_platform true
