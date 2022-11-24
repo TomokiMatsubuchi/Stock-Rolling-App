@@ -51,6 +51,13 @@ services:
       - 7900:7900
     shm_size: "2gb"
     tty: true
+  webpacker:
+    build: .
+    command: bundle exec bin/webpack-dev-server
+    volumes:
+      - .:/favorite_spot
+    ports:
+      - "8000:8000"
 volumes:
   bundle_data:
   postgres:
