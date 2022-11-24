@@ -40,7 +40,6 @@ services:
       - bundle_data:/usr/local/bundle
     environment:
       REDIS_URL: redis://redis:6379
-      DB_URL: db://db:5432
     depends_on:
       - redis
       - db
@@ -57,4 +56,3 @@ volumes:
   postgres:
   redis:
   sidekiq:
-
