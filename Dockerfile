@@ -5,7 +5,7 @@ RUN apt-get update -qq && apt-get install -y postgresql-client
 WORKDIR /myapp
 
 
-# install nodejs(LTS)
+# install nodejs(16.x)
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 
 # install yarn
