@@ -6,7 +6,7 @@ WORKDIR /myapp
 
 
 # install nodejs(LTS)
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 
 # install yarn
 RUN npm install --global yarn
