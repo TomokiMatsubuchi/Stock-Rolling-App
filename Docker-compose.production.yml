@@ -10,14 +10,8 @@ services:
       POSTGRES_USER: 'user1'
       POSTGRES_PASSWORD: 'user1-pass'
   web:
-    build: .
+    image: 805641289223.dkr.ecr.ap-northeast-1.amazonaws.com/stock-rolling-app:latest
     entrypoint: ./wait-for-it.sh db:5432
-    volumes:
-      - .:/myapp
-      - bundle_data:/usr/local/bundle
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
-      - log-data:/myapp/log
     ports:
       - "3000:3000"
     depends_on:
@@ -29,13 +23,13 @@ services:
       REDIS_URL: redis://redis:6379
       CHROME_URL: chrome://chrome:4444
   nginx:
-    build:
-      context: ./nginx
-    volumes:
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
+    image: nginx:1.18
+    container_name: nginx
     ports:
       - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf 
+      - ./public:/web/public
     depends_on:
       - web
   redis:
@@ -46,11 +40,8 @@ services:
       volumes:
         - redis:/var/lib/redis/data
   sidekiq:
-    build: .
-    command: bundle exec sidekiq 
-    volumes:
-      - .:/myapp
-      - bundle_data:/usr/local/bundle
+    image: 805641289223.dkr.ecr.ap-northeast-1.amazonaws.com/stock-rolling-app:latest
+    command: bundle exec sidekiq
     environment:
       REDIS_URL: redis://redis:6379
     depends_on:
@@ -69,5 +60,4 @@ volumes:
   postgres:
   redis:
   sidekiq:
-  public-data:
-  tmp-data:
+  nginx:
