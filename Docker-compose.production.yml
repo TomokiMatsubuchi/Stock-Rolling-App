@@ -14,7 +14,8 @@ services:
     image: 805641289223.dkr.ecr.ap-northeast-1.amazonaws.com/stock-rolling-app:latest
     volumes:
       - default.conf:/nginx/nginx.conf
-      - public:/public/
+      - public:/app/public/
+      - tmp:/app/tmp
     entrypoint: ./wait-for-it.sh db:5432
     ports:
       - "3000:3000"
@@ -31,8 +32,6 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
-    volumes:
-      - public:/app/public
     depends_on:
       - app
   redis:
@@ -65,3 +64,4 @@ volumes:
   sidekiq:
   default.conf:
   public:
+  tmp:
