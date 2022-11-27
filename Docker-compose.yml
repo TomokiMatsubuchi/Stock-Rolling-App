@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: 'user1'
       POSTGRES_PASSWORD: 'user1-pass'
-  web:
+  app:
     build: .
     entrypoint: ./wait-for-it.sh db:5432
     volumes:
@@ -29,15 +29,16 @@ services:
       REDIS_URL: redis://redis:6379
       CHROME_URL: chrome://chrome:4444
   nginx:
-    build:
-      context: ./nginx
+    container_name: web
+    image: nginx:latest
     volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - public-data:/myapp/public
       - tmp-data:/myapp/tmp
     ports:
       - "80:80"
     depends_on:
-      - web
+      - app
   redis:
       image: "redis:latest"
       command: redis-server --appendonly yes
@@ -71,3 +72,4 @@ volumes:
   sidekiq:
   public-data:
   tmp-data:
+  log-data:
