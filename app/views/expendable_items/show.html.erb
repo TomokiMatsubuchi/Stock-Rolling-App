@@ -1,34 +1,37 @@
 <h1><%= @expendable_item.name %>詳細ページ</h1>
 <div>
-  <p>
+  <div>
     <%= image_tag @expendable_item.image.variant(resize_to_limit: [100, 100]) if @expendable_item.image.present? %>
-  </p>
-  <p>
+  </div>
+  <div>
     <strong>商品名</strong>
     <%= @expendable_item.name %>
-  </p>
-  <p>
+  </div>
+  <div>
     <strong>内容量</strong>
     <%= @expendable_item.amount_of_product %>
-  </p>
-  <p>
+  </div>
+  <div>
     <strong>1回で使用する量</strong>
     <%= @expendable_item.amount_to_use %>
-  </p>
-  <p>
+  </div>
+  <div>
     <strong>使用頻度</strong>(1日に何回使用するか)
     <%= @expendable_item.frequency_of_use %>
-  </p>
-  <p>
+  </div>
+  <div>
     <strong>自動購入</strong>
     <%= @expendable_item.auto_buy %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <%= link_to '基準日の再設定', data: { confirm: '再設定すると以前の消費完了日には戻せませんがよろしいですか?'}, set_reference_day: true %>
+  </div>
+  <div>
     <%= link_to '商品情報の編集', edit_expendable_item_path(@expendable_item.id) %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= link_to '商品情報の削除', expendable_item_path(@expendable_item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
-  </p>
+  </div>
 </div>
 <div>
   <%= link_to 'お買物ページ一覧へ', expendable_items_path %>
