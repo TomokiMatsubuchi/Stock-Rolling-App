@@ -24,7 +24,7 @@
     <%= @expendable_item.auto_buy %>
   </div>
   <div>
-    <%= link_to '基準日の再設定', data: { confirm: '再設定すると以前の消費完了日には戻せませんがよろしいですか?'}, set_reference_day: true %>
+    <%= link_to '基準日の再設定', expendable_item_path(@expendable_item.id, set_reference_day: true), data: { confirm: '再設定すると以前の消費完了日には戻せませんがよろしいですか?'} %>
   </div>
   <div>
     <%= link_to '商品情報の編集', edit_expendable_item_path(@expendable_item.id) %>

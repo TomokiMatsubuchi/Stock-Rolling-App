@@ -40,11 +40,11 @@ class BuyAmazonJob < ApplicationJob
                 text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
               }
               line_message(user, message)
-              #reference_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
-              #amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
-              #deadline_on = reference_date.since(amount_of_day.days)
-              #item.update(deadline_on: deadline_on, reference_date: reference_date)
-              item.update(auto_buy: "しない")
+              send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
+              amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
+              deadline_on = reference_day(send_date).since(amount_of_day.days)
+              item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
+              #item.update(auto_buy: "しない")
             else
               message = {
                 type: 'text',
@@ -92,5 +92,18 @@ class BuyAmazonJob < ApplicationJob
     }
 
     response = client.push_message(user.uid, message)
+  end
+
+  def reference_day(send_date)
+    year = Date.today.to_s.scan(/\d+/)[0]
+    date = send_date.scan(/\d+/)
+    reference_day = year + "-" + date.join("-")
+    if reference_day.to_date < Date.today
+      new_year = year.to_i + 1 
+      reference_day = new_year.to_s + "-" + date.join("-")
+      reference_day.to_date
+    else
+      reference_day.to_date
+    end
   end
 end
