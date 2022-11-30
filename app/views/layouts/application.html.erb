@@ -13,14 +13,14 @@
     <ul>
       <% if user_signed_in? %>
         <% if user_admin? %>
-          <li><%= link_to '管理者用ページ', admin_users_path %></li>
+          <li><%= link_to t('defaults.admin_page'), admin_users_path %></li>
         <% end %>
-        <li><%= link_to 'お買い物メモ', expendable_items_path %></li>
-        <li><%= link_to '新規消耗品登録', new_expendable_item_path %></li>
+        <li><%= link_to t('defaults.shopping_memo'), expendable_items_path %></li>
+        <li><%= link_to t('defaults.new_expendable_item'), new_expendable_item_path %></li>
         <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
         <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
       <% else %>
-        <li><%= link_to 'ログインはこちら', new_user_session_path %></li>
+        <li><%= link_to t('defaults.visit_login'), new_user_session_path %></li>
       <% end %>
     </ul>
     <%= yield %>

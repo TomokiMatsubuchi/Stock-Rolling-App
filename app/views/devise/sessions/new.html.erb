@@ -1,6 +1,12 @@
-<h2>Log in</h2>
+<h2>About This App</h2>
 
 <p>まず、以下のボタンから友達追加をお願いします。</p>
-<a href="https://lin.ee/YTbl29b"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+<a href="https://lin.ee/25lsvgy"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
 
-<%= render "devise/shared/links" %>
+<div>
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to image_tag("btn_login_base copy.png"), omniauth_authorize_path(resource_name, provider), method: :post %><br />
+    <% end %>
+  <% end %>
+</div>

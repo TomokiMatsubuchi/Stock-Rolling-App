@@ -4,28 +4,26 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name, '名前' %>
+    <%= f.label :name, t('.name') %>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :line_alert, 'Line通知機能' %>
+    <%= f.label :line_alert, t('.line_alert') %>
     <%= f.check_box :line_alert %>
   </div>
 
   <div class="field">
-    <%= f.label :ec_login_id, 'ログインID' %>
+    <%= f.label :ec_login_id, t('.login_id') %>
     <%= f.email_field :ec_login_id %>
   </div>
 
   <div class="field">
-    <%= f.label :ec_login_password, 'パスワード' %>
+    <%= f.label :ec_login_password, t('.password') %>
     <%= f.password_field :ec_login_password %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit t('.update') %>
   </div>
 <% end %>
-
-<%= link_to "Back", :back %>

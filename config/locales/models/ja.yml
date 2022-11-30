@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      expendable_item:
+        name: '商品名'
+        amount_of_product: '内容量'
+        amount_to_use: '1回で使用する量'
+        frequency_of_use: '使用頻度'
