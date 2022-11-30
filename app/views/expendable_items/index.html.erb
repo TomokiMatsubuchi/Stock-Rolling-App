@@ -1,4 +1,4 @@
-<h1>お買物一覧</h1>
+<h1><%= t('.shopping_index') %></h1>
 
 
 <% @expendable_items.each do |item| %>
@@ -7,25 +7,25 @@
       <%= image_tag item.image.variant(resize_to_limit: [100, 100]) if item.image.present? %>
     </p>
     <p>
-      <strong>商品名:</strong>
+      <strong><%= t('.name') %>:</strong>
       <%= item.name %>
     </p>
     <p>
-      <strong>内容量:</strong>
+      <strong><%= t('.amount_of_product') %>:</strong>
       <%= item.amount_of_product %>
     </p>
     <p>
-      消費完了まであと
+      <%= t('.to_') %>
       <strong>
         <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
       </strong>
-      日
+      <%= t('.day') %>
     </p>
     <p>
-      <%= link_to '詳細', expendable_item_path(item.id) %>
+      <%= link_to t('.show'), expendable_item_path(item.id) %>
     </p>
     <p>
-      <%= link_to '削除', expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
+      <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
     </p>
   </div>
 <% end %>

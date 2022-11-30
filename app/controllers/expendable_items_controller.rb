@@ -66,8 +66,10 @@ class ExpendableItemsController < ApplicationController
     amount_of_product = params[:expendable_item][:amount_of_product].to_i
     amount_to_use = params[:expendable_item][:amount_to_use].to_i
     frequency_of_use = params[:expendable_item][:frequency_of_use].to_i
-    amount_of_day = amount_of_product /  amount_to_use / frequency_of_use
-    @expendable_item.deadline_on = @expendable_item.reference_date.since(amount_of_day.days)
+    if amount_of_product > 0 && amount_to_use > 0 && frequency_of_use > 0
+      amount_of_day = amount_of_product /  amount_to_use / frequency_of_use
+      @expendable_item.deadline_on = @expendable_item.reference_date.since(amount_of_day.days)
+    end
   end
 
   def correct_user_expendable_item

@@ -1,0 +1,66 @@
+ja:
+  defaults:
+    admin_page: '管理者用ページ'
+    shopping_memo: 'お買い物メモ'
+    new_expendable_item: '新規消耗品の登録'
+    visit_login: 'ログインはこちら'
+  expendable_items:
+    index:
+      shopping_index: 'お買い物リスト'
+      name: '商品名'
+      amount_of_product: '内容量'
+      to_: '消費完了まであと'
+      day: '日'
+      show: '詳細'
+      delete: '削除'
+    form:
+      name: '商品名'
+      amount_of_product: '内容量'
+      amount_to_use: '1回で使用する量'
+      frequency_of_use: '使用頻度'
+      product_image: '商品画像'
+      auto_buy: '自動購入'
+      product_url: '購入先URL'
+      submit:
+        create: '新規登録する'
+        update: '商品情報を更新する'
+    new:
+      new_expendable_item: '新規消耗品登録'
+    edit:
+      edit_item: '編集ページ'
+    show:
+      show_item: '詳細ページ'
+      name: '商品名'
+      amount_of_product: '内容量'
+      amount_to_use: '1回で使用する量'
+      frequency_of_use: '使用頻度'
+      about_frequency: '1日に何回使用するか'
+      auto_buy: '自動購入'
+      reset_reference_day: '基準日の再設定'
+      edit: '商品情報の編集'
+      delete: '商品情報の削除'
+  users:
+    show:
+      name: '登録者名'
+      line_alert: 'Line通知機能'
+      connect_auto_buy: '自動購入連携'
+      edit: 'アカウント情報の編集'
+      delete: 'アカウント情報の削除'
+  devise:
+    registrations:
+      edit:
+        name: '登録者名'
+        line_alert: 'Line通知機能'
+        login_id: 'ログインID'
+        password: 'パスワード'
+        update: 'アカウント情報の更新'
+  admin:
+    users:
+      index:
+        name: "登録者名"
+        expendable_items: "登録済消耗品数"
+        line_alert: 'Line通知機能'
+        connect_auto_buy: '自動購入連携'
+        delete: 'アカウント情報の削除'
+
+
