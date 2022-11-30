@@ -13,10 +13,9 @@ class ExpendableItemsController < ApplicationController
   def create
     @expendable_item = ExpendableItem.new(expendable_item_params)
     @expendable_item.user_id = current_user.id
+    @expendable_item.reference_date = Date.today
+    deadline
     if @expendable_item.save
-      amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
-      deadline = @expendable_item.created_at.since(amount_of_day.days)
-      @expendable_item.update(deadline_on: deadline)
       flash[:notice] = '消耗品の新規登録が完了しました!'
       redirect_to expendable_items_path
     else
@@ -26,6 +25,13 @@ class ExpendableItemsController < ApplicationController
 
   def show
     @expendable_item = ExpendableItem.find(params[:id])
+    if params[:set_reference_day]
+      reference_date = Date.today
+      amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use / @expendable_item.frequency_of_use
+      deadline_on = reference_date.since(amount_of_day.days)
+      @expendable_item.update(deadline_on: deadline_on, reference_date: reference_date)
+      redirect_to expendable_items_path
+    end
   end
 
   def edit
@@ -34,10 +40,8 @@ class ExpendableItemsController < ApplicationController
 
   def update
     @expendable_item = ExpendableItem.find(params[:id])
+    deadline
     if @expendable_item.update(expendable_item_params)
-      amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use /  @expendable_item.frequency_of_use
-      deadline = @expendable_item.created_at.since(amount_of_day.days)
-      @expendable_item.update(deadline_on: deadline)
       flash[:notiece] = '消耗品情報を更新しました!'
       redirect_to expendable_items_path
     else
@@ -56,6 +60,14 @@ class ExpendableItemsController < ApplicationController
 
   def expendable_item_params
     params.require(:expendable_item).permit(:name, :amount_of_product, :deadline_on, :image, :amount_to_use, :frequency_of_use, :product_url, :auto_buy)
+  end
+
+  def deadline
+    amount_of_product = params[:expendable_item][:amount_of_product].to_i
+    amount_to_use = params[:expendable_item][:amount_to_use].to_i
+    frequency_of_use = params[:expendable_item][:frequency_of_use].to_i
+    amount_of_day = amount_of_product /  amount_to_use / frequency_of_use
+    @expendable_item.deadline_on = @expendable_item.reference_date.since(amount_of_day.days)
   end
 
   def correct_user_expendable_item

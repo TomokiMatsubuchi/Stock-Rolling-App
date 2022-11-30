@@ -2,7 +2,6 @@ require 'sidekiq/web'
 require 'sidekiq-scheduler/web'
 
 Rails.application.routes.draw do
-  get 'users/show'
   devise_scope :user do
     root "users/sessions#new"
   end

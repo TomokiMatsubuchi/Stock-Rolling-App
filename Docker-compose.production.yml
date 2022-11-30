@@ -12,10 +12,12 @@ services:
   app:
     container_name: app
     image: 805641289223.dkr.ecr.ap-northeast-1.amazonaws.com/stock-rolling-app:latest
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - public-data:/myapp/public
       - tmp-data:/myapp/tmp
       - log-data:/myapp/log
+      - ./rails/.env:/myapp/.env
     entrypoint: ./wait-for-it.sh db:5432
     ports:
       - "3000:3000"
