@@ -3,10 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>ユーザ名</th>
-      <th>登録済消耗品数</th>
-      <th>Line通知機能</th>
-      <th>自動購入連携</th>
+      <th><%= t('.name') %></th>
+      <th><%= t('.expendable_items') %></th>
+      <th><%= t('.line_alert') %></th>
+      <th><%= t('.connect_auto_buy') %></th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +16,7 @@
         <td><%= user.expendable_items.count %></td>
         <td><%= user.line_alert ? "あり" : "なし" %></td>
         <td><%= user.ec_login_id.present? ? "あり" : "なし" %></td>
-        <td><%= link_to 'アカウント削除', admin_user_path(user.id), method: :delete, data: {confirm: t('本当に削除しますか？')} %></td>
+        <td><%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: t('本当に削除しますか？')} %></td>
       </tr>
     <% end %>
   </tbody>
