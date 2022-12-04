@@ -122,7 +122,17 @@
   justify-content: center;
 }
 @media screen and (min-width:768px){
+  .wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
   .wrap-raw{
+    width: 28%;
+  }
+  .wrap::after{
+    content: "";
+    display: block;
     width: 28%;
   }
   .button-size{
