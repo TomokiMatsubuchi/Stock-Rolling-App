@@ -1,35 +1,35 @@
-<h1><%= @expendable_item.name %><%= t('.show_item') %></h1>
-<div>
-  <div>
+<h1 class="md:text-5xl text-3xl place-content-center text-center m-5 p-5"><%= @expendable_item.name %><%= t('.show_item') %></h1>
+<div class="container mx-auto md:border-l-2 md:border-r-2 md:border-black">
+  <div class="sm:text-lg md:text-2xl sm:p-2 md:p-5 sm:m-2 md:m-5 w-full text-center">
     <%= image_tag @expendable_item.image.variant(resize_to_limit: [100, 100]) if @expendable_item.image.present? %>
   </div>
-  <div>
+  <div class="sm:text-lg md:text-2xl sm:p-2 md:p-5 sm:m-2 md:m-5 w-full text-center">
     <strong><%= t('.name') %></strong>
     <%= @expendable_item.name %>
   </div>
-  <div>
-    <strong><%= t('.amount_of_product') %></strong>
-    <%= @expendable_item.amount_of_product %>
+  <div class="md:flex justify-center whitespace-nowrap">
+    <div class="sm:text-lg md:text-2xl sm:p-2 md:p-5 sm:m-2 md:m-5 text-center">
+      <strong><%= t('.amount_of_product') %></strong><p class="md:block md:h-8"></p>
+      <%= @expendable_item.amount_of_product %>
+    </div>
+    <div class="sm:text-lg md:text-2xl sm:p-2 md:p-5 sm:m-2 md:m-5 text-center">
+      <strong><%= t('.amount_to_use') %></strong><p class="md:block md:h-8"></p>
+      <%= @expendable_item.amount_to_use %>
+    </div>
+    <div class="sm:text-lg md:text-2xl sm:p-2 md:p-5 sm:m-2 md:m-5 text-center">
+      <strong><%= t('.frequency_of_use') %></strong><p class="block">(<%= t('.about_frequency') %>)</p>
+      <%= @expendable_item.frequency_of_use %>
+    </div>
   </div>
-  <div>
-    <strong><%= t('.amount_to_use') %></strong>
-    <%= @expendable_item.amount_to_use %>
-  </div>
-  <div>
-    <strong><%= t('.frequency_of_use') %></strong>(<%= t('.about_frequency') %>)
-    <%= @expendable_item.frequency_of_use %>
-  </div>
-  <div>
+  <div class="sm:text-lg md:text-2xl sm:p-2 md:p-5 sm:m-2 md:m-5 w-full text-center">
     <strong><%= t('.auto_buy') %></strong>
     <%= @expendable_item.auto_buy %>
   </div>
-  <div>
-    <%= link_to t('.reset_reference_day'), expendable_item_path(@expendable_item.id, set_reference_day: true), data: { confirm: '再設定すると以前の消費完了日には戻せませんがよろしいですか?'} %>
+  <div class="sm:text-lg md:text-2xl p-5 m-5 w-full text-center">
+    <%= link_to t('.reset_reference_day'), expendable_item_path(@expendable_item.id, set_reference_day: true), data: { confirm: '再設定すると以前の消費完了日には戻せませんがよろしいですか?'}, class: "sm:m-2 bg-yellow-200 text-black py-2 px-2 rounded md:text-2xl lg:text-4xl" %>
   </div>
-  <div>
-    <%= link_to t('.edit'), edit_expendable_item_path(@expendable_item.id) %>
-  </div>
-  <div>
-    <%= link_to t('.delete'), expendable_item_path(@expendable_item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
+  <div class="sm:text-lg md:text-2xl p-5 m-5 w-full text-center">
+    <%= link_to t('.edit'), edit_expendable_item_path(@expendable_item.id), class: "sm:m-2 bg-green-200 text-black py-2 px-2 rounded md:text-2xl lg:text-4xl" %>
+    <%= link_to t('.delete'), expendable_item_path(@expendable_item.id), method: :delete, data: { confirm: '本当に削除しますか?'}, class: "sm:m-2 bg-red-200 text-black py-2 px-2 rounded md:text-2xl lg:text-4xl" %>
   </div>
 </div>

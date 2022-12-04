@@ -1,22 +1,22 @@
-<h1>All Acount</h1>
+<h1 class="md:text-8xl text-4xl place-content-center text-center m-3 p-3">All Acount</h1>
 
 <table>
   <thead>
-    <tr>
-      <th><%= t('.name') %></th>
-      <th><%= t('.expendable_items') %></th>
-      <th><%= t('.line_alert') %></th>
-      <th><%= t('.connect_auto_buy') %></th>
+    <tr class="sm-admin md:text-xl text-center">
+      <th class="whitespace-nowrap md:m-3 md:p-3"><%= t('.name') %></th>
+      <th class="whitespace-nowrap md:m-3 md:p-3" ><%= t('.expendable_items') %></th>
+      <th class="whitespace-nowrap md:m-3 md:p-3"><%= t('.line_alert') %></th>
+      <th class="whitespace-nowrap md:m-3 md:p-3"><%= t('.connect_auto_buy') %></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class="whitespace-nowrap text-sm md:text-xl text-center">
         <td><%= user.name %></td>
         <td><%= user.expendable_items.count %></td>
-        <td><%= user.line_alert ? "あり" : "なし" %></td>
+        <td><%= user.line_alert ? "ON" : "OFF" %></td>
         <td><%= user.ec_login_id.present? ? "あり" : "なし" %></td>
-        <td><%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: t('本当に削除しますか？')} %></td>
+        <td><%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: t('本当に削除しますか？')}, class: "sm:m-1 bg-red-200 text-black py-2 px-1 rounded sm-admin md:text-2xl lg:text-4xl" %></td>
       </tr>
     <% end %>
   </tbody>

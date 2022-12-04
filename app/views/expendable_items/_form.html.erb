@@ -1,43 +1,57 @@
 <% if expendable_item.errors.any? %>
-    <div id="error_explanation" class = "alert alert-danger">
+    <div id="error_explanation" class = "text-xl md:text-2xl bg-red-300 font-boild text-black text-center ">
       <ul>
         <% expendable_item.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="p-2 md:p-3"><%= msg %></li>
         <% end %>
       </ul>
     </div>
 <% end %>
-<%= form_with(model: expendable_item, local:true) do |form| %>
-  <div>
-    <%= form.label :name, t('.name') %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :amount_of_product, t('.amount_of_product') %>
-    <%= form.text_field :amount_of_product %>
-  </div>
-  <div>
-    <%= form.label :amount_to_use, t('.amount_to_use') %>
-    <%= form.text_field :amount_to_use %>
-  </div>
-  <div>
-    <%= form.label :frequency_of_use, t('.frequency_of_use') %>
-    <p>(1日に何回使用するか)</p>
-    <%= form.text_field :frequency_of_use %>
-  </div>
-  <div>
-    <%= form.label :image, t('.product_image') %>
-    <%= form.file_field :image %>
-  </div>
-  <div>
-    <%= form.label :auto_buy, t('.auto_buy') %>
-    <%= form.check_box :auto_buy, {}, "する", "しない" %>
-  </div>
-  <div>
-    <%= form.label :product_url, t('.product_url') %>
-    <%= form.text_field :product_url %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="container mx-auto md:flex justify-center md:border-l-2 md:border-r-2 md:border-black p-3">
+  <%= form_with(model: expendable_item, local:true) do |form| %>
+    <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
+      <%= form.label :name, t('.name') %>
+      <%= form.text_field :name, class: "border border-black" %>
+    </div>
+    <div class="md:flex">
+      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
+        <%= form.label :amount_of_product, t('.amount_of_product') %>
+        <p class="md:block md:h-8"></p>
+        <%= form.text_field :amount_of_product, class: "border border-black" %>
+      </div>
+      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
+        <%= form.label :amount_to_use, t('.amount_to_use') %>
+        <p class="md:block md:h-8"></p>
+        <%= form.text_field :amount_to_use, class: "border border-black" %>
+      </div>
+      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
+        <%= form.label :frequency_of_use, t('.frequency_of_use') %>
+        <p class="block">(1日に何回使用するか)</p>
+        <%= form.text_field :frequency_of_use, class: "border border-black" %>
+      </div>
+    </div>
+    <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
+      <%= form.label :image, t('.product_image') %>
+      <%= form.file_field :image %>
+    </div>
+    <div class="flex">
+      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
+        <p class="block h-8"></p>
+        <%= form.label :auto_buy, t('.auto_buy') %>
+        <%= form.check_box :auto_buy, { class: "ml-5 transform scale-150" }, "する", "しない"  %>
+      </div>
+      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
+        <p class="md:block md:h-8"></p>
+        <%= form.label :product_url, t('.product_url') %>
+        <%= form.text_field :product_url, class: "border border-black" %>
+      </div>
+    </div>
+    <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
+      <% if expendable_item.id == nil %>
+        <%= form.submit t('.submit.create'), class: "m-3 bg-blue-200 text-black py-2 px-4 rounded button-size" %>
+      <% else %>
+        <%= form.submit t('.submit.update'), class: "m-3 bg-green-200 text-black py-2 px-4 rounded button-size" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
