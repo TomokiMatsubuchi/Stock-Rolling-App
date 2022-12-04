@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_destroy :not_destroy_no_admin
 
-  has_many :expendable_items
+  has_many :expendable_items, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,2 +1,3 @@
-<h1><%= @expendable_item.name %><%= t('.edit_item') %></h1>
+<h1 class="md:text-8xl text-5xl place-content-center text-center"><%= @expendable_item.name %></h1>
+<h1 class="md:text-8xl text-5xl place-content-center text-center"><%= t('.edit_item') %></h1>
 <%= render 'form', expendable_item: @expendable_item %>

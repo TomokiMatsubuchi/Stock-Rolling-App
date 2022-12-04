@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sampleapp</title>
+    <title>Stock Rolling App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <ul>
-      <% if user_signed_in? %>
-        <% if user_admin? %>
-          <li><%= link_to t('defaults.admin_page'), admin_users_path %></li>
-        <% end %>
-        <li><%= link_to t('defaults.shopping_memo'), expendable_items_path %></li>
-        <li><%= link_to t('defaults.new_expendable_item'), new_expendable_item_path %></li>
-        <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
-        <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
-      <% else %>
-        <li><%= link_to t('defaults.visit_login'), new_user_session_path %></li>
-      <% end %>
-    </ul>
-    <%= yield %>
+    <div id="contents">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div id="sub">
+        <nav class="globalMenuSp box">
+          <ul class="whitespace-nowrap">
+            <% if user_signed_in? %>
+              <% if user_admin? %>
+                <li><%= link_to t('defaults.admin_page'), admin_users_path %></li>
+              <% end %>
+              <li><%= link_to t('defaults.shopping_memo'), expendable_items_path %></li>
+              <li><%= link_to t('defaults.new_expendable_item'), new_expendable_item_path %></li>
+              <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
+              <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+            <% else %>
+              <li><%= link_to t('defaults.visit_login'), new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+      <main id="main">
+        <%= yield %>
+        <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black">
+          <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
+

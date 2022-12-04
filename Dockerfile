@@ -12,7 +12,8 @@ RUN npm install --global yarn
 
 
 COPY . /myapp
-
+RUN yarn add tailwindcss@2 postcss@8 @fullhuman/postcss-purgecss@4 postcss-loader@4 autoprefixer@10
+#RUN yarn add jquery
 # gem
 COPY ./Gemfile /myapp
 COPY ./Gemfile.lock /myapp
@@ -23,8 +24,8 @@ RUN bundle config set force_ruby_platform true
 RUN bundle install
 
 #webpacker
-RUN bundle exec rails webpacker:install
-RUN bundle exec rails webpacker:compile
+#RUN bundle exec rails webpacker:install
+#RUN bundle exec rails webpacker:compile
 
 
 # Add a script to be executed every time the container starts.

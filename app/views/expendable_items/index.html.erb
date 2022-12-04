@@ -1,31 +1,31 @@
-<h1><%= t('.shopping_index') %></h1>
+<h1 class="md:text-8xl text-4xl place-content-center text-center m-3 p-3"><%= t('.shopping_index') %></h1>
+<div class="container mx-auto wrap">
 
 
-<% @expendable_items.each do |item| %>
-  <div>
-    <p>
-      <%= image_tag item.image.variant(resize_to_limit: [100, 100]) if item.image.present? %>
-    </p>
-    <p>
-      <strong><%= t('.name') %>:</strong>
-      <%= item.name %>
-    </p>
-    <p>
-      <strong><%= t('.amount_of_product') %>:</strong>
-      <%= item.amount_of_product %>
-    </p>
-    <p>
-      <%= t('.to_') %>
-      <strong>
-        <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
-      </strong>
-      <%= t('.day') %>
-    </p>
-    <p>
-      <%= link_to t('.show'), expendable_item_path(item.id) %>
-    </p>
-    <p>
-      <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'} %>
-    </p>
-  </div>
-<% end %>
+  <% @expendable_items.each do |item| %>
+    <div class="border border-black m-1 p-3 wrap-raw h-full">
+      <div class="m-3 h-1/3 flex justify-center">
+        <%= image_tag item.image.variant(resize_to_limit: [100, 100]) if item.image.present? %>
+      </div>
+      <div class="text-lg md:text-2xl m-3 flex justify-center whitespace-nowrap">
+        <strong><%= t('.name') %>:</strong>
+        <%= item.name %>
+      </div>
+      <div class="text-base md:text-xl m-3 flex justify-center whitespace-nowrap">
+        <strong><%= t('.amount_of_product') %>:</strong>
+        <%= item.amount_of_product %>
+      </div>
+      <div class="m-3 flex justify-center text-base md:text-xl">
+        <%= t('.to_') %>
+        <strong>
+          <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
+        </strong>
+        <%= t('.day') %>
+      </div>
+      <div class="text-lg md:text-xl m-2 flex justify-center whitespace-nowrap">
+        <%= link_to t('.show'), expendable_item_path(item.id), class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded"%>
+        <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'}, class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded" %>
+      </div>
+    </div>
+  <% end %>
+</div>

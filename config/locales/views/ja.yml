@@ -61,6 +61,6 @@ ja:
         expendable_items: "登録済消耗品数"
         line_alert: 'Line通知機能'
         connect_auto_buy: '自動購入連携'
-        delete: 'アカウント情報の削除'
+        delete: 'アカウント削除'
 
 

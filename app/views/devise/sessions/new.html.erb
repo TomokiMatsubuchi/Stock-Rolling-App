@@ -1,12 +1,18 @@
-<h2>About This App</h2>
+<h2 class="md:text-8xl text-4xl place-content-center text-center whitespace-nowrap">About This App</h2>
+<div class="container mx-auto">
 
-<p>まず、以下のボタンから友達追加をお願いします。</p>
-<a href="https://lin.ee/25lsvgy"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+  <div class="my-10">
+    <p class="text-sm md:text-lg text-center">まず、以下のボタンから友達追加をお願いします。</p>
+    <a href="https://lin.ee/YTbl29b" class="my-5 md:my-10 p-5 md:p-10 flex-center  mx-auto">
+    <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+    </a>
+  </div>
 
-<div>
-  <%- if devise_mapping.omniauthable? %>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to image_tag("btn_login_base copy.png"), omniauth_authorize_path(resource_name, provider), method: :post %><br />
+  <div class="container mx-auto my-5 md:my-10 p-5 md:p-10 flex-center">
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to image_tag("btn_login_base copy.png"), omniauth_authorize_path(resource_name, provider), method: :post %><br />
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
