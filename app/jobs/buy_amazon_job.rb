@@ -90,8 +90,9 @@ class BuyAmazonJob < ApplicationJob
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
-
-    response = client.push_message(user.uid, message)
+    if user.line_alert == true
+      response = client.push_message(user.uid, message)
+    end
   end
 
   def reference_day(send_date)
