@@ -19,7 +19,20 @@ Rails.application.routes.draw do
   end
   resources :expendable_items
 
-  get '*not_found', to: 'application#routing_error'
+
+  class ErrorAvoid
+    def initialize
+      @url = "active_storage/"
+    end
+
+    def matches?(request)
+      @url.include?(request.url)
+    end
+  end
+
+  Rails.application.routes.draw do
+    get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
+  end
   post '*not_found', to: 'application#routing_error'
 
   mount Sidekiq::Web, at: '/sidekiq'
