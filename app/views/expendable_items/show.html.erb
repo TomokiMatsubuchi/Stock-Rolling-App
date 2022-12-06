@@ -26,7 +26,7 @@
     <%= @expendable_item.auto_buy %>
   </div>
   <div class="sm:text-lg md:text-2xl p-5 m-5 w-full text-center">
-    <%= link_to t('.reset_reference_day'), expendable_item_path(@expendable_item.id, set_reference_day: true), data: { confirm: '再設定すると以前の消費完了日には戻せませんがよろしいですか?'}, class: "sm:m-2 bg-yellow-200 text-black py-2 px-2 rounded md:text-2xl lg:text-4xl" %>
+    <%= link_to t('.reset_reference_day'), expendable_item_path(@expendable_item.id, set_reference_day: true), data: { confirm: '再設定すると以前の消費開始日には戻せませんがよろしいですか?'}, class: "sm:m-2 bg-yellow-200 text-black py-2 px-2 rounded md:text-2xl lg:text-4xl" %>
   </div>
   <div class="sm:text-lg md:text-2xl p-5 m-5 w-full text-center">
     <%= link_to t('.edit'), edit_expendable_item_path(@expendable_item.id), class: "sm:m-2 bg-green-200 text-black py-2 px-2 rounded md:text-2xl lg:text-4xl" %>

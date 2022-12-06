@@ -36,7 +36,7 @@ ja:
       frequency_of_use: '使用頻度'
       about_frequency: '1日に何回使用するか'
       auto_buy: '自動購入'
-      reset_reference_day: '基準日の再設定'
+      reset_reference_day: '本日を消費開始日に再設定する'
       edit: '商品情報の編集'
       delete: '商品情報の削除'
   users:
