@@ -11,7 +11,9 @@ services:
       POSTGRES_PASSWORD: 'user1-pass'
   app:
     build: .
-    entrypoint: ./wait-for-it.sh db:5432
+    command: bundle exec puma -C config/puma.rb -e production
+    #wait-for-itは開発用
+    #entrypoint: ./wait-for-it.sh db:5432
     volumes:
       - .:/myapp
       - bundle_data:/usr/local/bundle

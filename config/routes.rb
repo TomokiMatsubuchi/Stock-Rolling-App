@@ -22,17 +22,19 @@ Rails.application.routes.draw do
 
   class ErrorAvoid
     def initialize
-      @url = "active_storage/"
+      @storage = "active_storage/"
+      @js = "/packs/js/application"
+      @css = "/assets/application"
     end
 
     def matches?(request)
-      @url.include?(request.url)
+      @storage.include?(request.url)
+      @js.include?(request.url)
+      @css.include?(request.url)
     end
   end
 
-  #Rails.application.routes.draw do
-    get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
-  #end
+  get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
   post '*not_found', to: 'application#routing_error'
 
   mount Sidekiq::Web, at: '/sidekiq'

@@ -87,5 +87,6 @@ test:
 production:
   <<: *default
   database: StockRollingApp_production
-  username: StockRollingApp
-  password: <%= ENV['STOCKROLLINGAPP_DATABASE_PASSWORD'] %>
+  username: user1
+  password: 'user1-pass'
+  
