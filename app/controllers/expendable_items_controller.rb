@@ -30,6 +30,7 @@ class ExpendableItemsController < ApplicationController
       amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use / @expendable_item.frequency_of_use
       deadline_on = reference_date.since(amount_of_day.days)
       @expendable_item.update(deadline_on: deadline_on, reference_date: reference_date)
+      flash[:notice] = '本日を消費開始日に再設定しました!'
       redirect_to expendable_items_path
     end
   end
@@ -42,7 +43,7 @@ class ExpendableItemsController < ApplicationController
     @expendable_item = ExpendableItem.find(params[:id])
     deadline
     if @expendable_item.update(expendable_item_params)
-      flash[:notiece] = '消耗品情報を更新しました!'
+      flash[:notice] = '消耗品情報を更新しました!'
       redirect_to expendable_items_path
     else
       render :edit
@@ -76,6 +77,6 @@ class ExpendableItemsController < ApplicationController
     @expendable_item = ExpendableItem.find(params[:id])
     user = User.find(@expendable_item.user_id)
     return if user_admin?
-    redirect_to expendable_items_path, flash: {notice: "本人以外アクセスできません"} unless current_user?(user)
+    redirect_to expendable_items_path, flash: {warn: "本人以外アクセスできません"} unless current_user?(user)
   end
 end

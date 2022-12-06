@@ -30,9 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
-  Rails.application.routes.draw do
+  #Rails.application.routes.draw do
     get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
-  end
+  #end
   post '*not_found', to: 'application#routing_error'
 
   mount Sidekiq::Web, at: '/sidekiq'

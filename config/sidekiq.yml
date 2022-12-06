@@ -2,3 +2,6 @@
   push_line:
     cron: '0 0 12 * * *'
     class: PushLineJob
+  buy_amazon:
+    cron: '0 0 13 * * *'
+    class: BuyAmazonJob

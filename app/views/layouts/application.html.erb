@@ -14,7 +14,16 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key} px-4 py-3 rounded") %>
+    <% end %>
     <div id="contents">
+      <main id="main">
+        <%= yield %>
+        <div class="flex justify-center mt-14 p-10 text-xl border-t border-b border-black">
+          <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
+        </div>
+      </main>
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -37,12 +46,6 @@
           </ul>
         </nav>
       </div>
-      <main id="main">
-        <%= yield %>
-        <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black">
-          <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
-        </div>
-      </main>
     </div>
   </body>
 </html>
