@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = '#{@user.name}を削除しました。'
       redirect_to admin_users_path
     else
-      flash[:notice] = '管理者が0人になってしまうため削除できません。'
+      flash[:error] = '管理者が0人になってしまうため削除できません。'
       redirect_to admin_users_path
     end
   end
@@ -19,6 +19,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def admin_required
-    redirect_to expendable_items_path, flash: {alert: "管理者以外はアクセスできません"} unless user_admin?
+    redirect_to expendable_items_path, flash: {warn: "管理者以外はアクセスできません"} unless user_admin?
   end
 end
