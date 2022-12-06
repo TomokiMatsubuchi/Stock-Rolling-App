@@ -65,10 +65,11 @@ wait_for_wrapper()
         echoerr "$WAITFORIT_cmdname: timeout occurred after waiting $WAITFORIT_TIMEOUT seconds for $WAITFORIT_HOST:$WAITFORIT_PORT"
     fi
 
-    #rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && rails s -p 3000 -b '0.0.0.0'
-    #nginx導入後は下
-    rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec puma -C config/puma.rb
-    
+    #=======ローカルと本番切り替え==============
+    rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec puma -C config/puma.rb -e production
+    #rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec puma -C config/puma.rb
+    #=========================================
+
     return $WAITFORIT_RESULT
 }
 
