@@ -17,7 +17,8 @@ services:
       - tmp-data:/myapp/tmp
       - log-data:/myapp/log
       - ./rails/.env:/myapp/.env
-    entrypoint: ./wait-for-it.sh db:5432
+      - ./rails/master.key:/myapp/config/master.key
+    command: bundle exec puma -C config/puma.rb -e production
     ports:
       - "3000:3000"
     depends_on:
