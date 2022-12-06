@@ -8,6 +8,7 @@ environment.plugins.prepend('Provide',
     })
 )
 
+
 module.exports = environment
 
 function hotfixPostcssLoaderConfig (subloader) {
@@ -23,7 +24,7 @@ function hotfixPostcssLoaderConfig (subloader) {
       delete subloader.options.config;
     }
   }
-}
+};
 
 environment.loaders.keys().forEach(loaderName => {
   const loader = environment.loaders.get(loaderName);
