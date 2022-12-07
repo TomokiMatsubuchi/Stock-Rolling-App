@@ -1,20 +1,50 @@
 ## README
 
-## 開発言語
+## Stock Roller
+![facebook_cover_photo_2](https://user-images.githubusercontent.com/109142010/206126785-c8e09255-e155-4ba8-9e12-70fc1bc6de01.png)
+
+## 製品概要 / Overview
+日常生活の中で日々使っていくシャンプーや石鹸、洗剤などの日用品が気づいたときに空っぽになっていたという経験はありませんか?<br>
+また、買い物は意外と時間がかかりますし、必要なものを買いに行くためだけにわざわざ外出するとなるとやる気も起きません。<br>
+Stock Rollerはこの問題を解決するための2つの機能を提供します。<br>
+①使用している日用品をあらかじめ登録しておくことで無くなる1週間前からLINEでリマインドを送信します。<br>
+②時間を有効活用したい方向けにECサイトの情報を登録しておくと自動で購入してくれます。<br>
+上記2点の機能により、あなたの買い物に煩わされる時間を減らし生活を豊かにするお手伝いをします。
+
+## 開発言語 / Language
+- OS: Linux
 - Ruby 3.0.1
-- Rails 6.0.6
+- Ruby on Rails 6.0.6
+- Javascript(JQuery)
 
-## 就業Termの技術
-- AWS EC2
-- devise
-
-## カリキュラム外の技術
-- LINE ログイン
-- LINE BOT 連携
-- API(Amazon or 楽天 or yahoo)
-- seleniumによるwebスクレイピングを使った自動購入機能
+## インフラ / Inrastructure
+- AWS (EC2)
 - Docker
+- Docker-compose
 
+
+## 機能・使用Gem / Functions・Gem
+- LINE ログイン
+  - devise
+  - omniauth-line
+  - omniauth-rails_csrf_protection
+- LINE BOT 連携
+  - line-bot-api
+- 非同期処理
+  - sidekiq
+  - sidekiq-scheduler
+- API(Amazon or 楽天 or yahoo)
+  - 実装検討中
+- seleniumによるwebスクレイピングを使った自動購入機能
+  - selenium-webdriver
+- Docker導入
+  - nokogiri
+  - mini_portile2
+- 国際化
+  -rails-i18n
+- ページネーション
+  - kaminari
+  
 ## 実行手順
 ```
 $ git clone git@github.com:TomokiMatsubuchi/Stock-Rolling-App.git
