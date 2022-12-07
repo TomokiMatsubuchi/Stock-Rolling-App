@@ -12,7 +12,8 @@ services:
   app:
     build: .
     #開発環境はentrypointを使用
-    entrypoint: ./wait-for-it.sh db:5432
+    #entrypoint: ./wait-for-it.sh db:5432
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/myapp
       - bundle_data:/usr/local/bundle

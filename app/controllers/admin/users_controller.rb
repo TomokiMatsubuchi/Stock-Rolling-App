@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_required, only: [:index, :destroy]
 
   def index
-    @users = User.all
+    @users = User.order(:created_at).page(params[:page])
   end
 
   def destroy
