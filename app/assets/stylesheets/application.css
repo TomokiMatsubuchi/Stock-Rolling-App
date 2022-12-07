@@ -112,6 +112,20 @@
   .sm-admin{
     font-size: 0.7rem;
   }
+  .logo-width{
+    width: 42px;
+  }
+  .logo{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+  }
+  .pagination{
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 }
 
 /*自己実装 */
@@ -139,13 +153,6 @@
   border-color: #ef4444;
   border-width: 1px;
   text-decoration-color: #b91c1c;
-}
-.pagination{
-  display: flex;
-  justify-content: center;
-  margin: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 .pagination * {
   padding-left: 0.75rem;
@@ -228,5 +235,15 @@
   body {
     margin: 0;
     padding: 0;
+  }
+  .logo-width{
+    width: 150px;
+  }
+  .pagination{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }

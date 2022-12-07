@@ -13,13 +13,15 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key} px-4 py-3 rounded") %>
-    <% end %>
     <div id="contents">
+      <header class="flex jutsify-between">
+        <div class="logo">
+          <%= link_to image_tag('logo_transparent.png', class: "logo-width"), expendable_items_path  %>
+        </div>
+      </header>
       <main id="main">
         <%= yield %>
-        <div class="flex justify-center mt-14 p-10 text-xl border-t border-b border-black">
+        <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black">
           <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
         </div>
       </main>
