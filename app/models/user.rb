@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  paginates_per 10
+
   before_destroy :not_destroy_no_admin
 
   has_many :expendable_items, dependent: :destroy
