@@ -21,7 +21,7 @@ default: &default
   #docker内のdbと接続するための記述
   host: db
   username: user1
-  password: 'user1-pass'
+  password: <%= ENV["DB_PASSWORD"] %>
 
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -88,5 +88,5 @@ production:
   <<: *default
   database: StockRollingApp_production
   username: user1
-  password: 'user1-pass'
+  password: <%= ENV["DB_PASSWORD"] %>
   
