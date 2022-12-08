@@ -1,5 +1,5 @@
 <h1 class="md:text-8xl text-5xl place-content-center text-center"><%= @expendable_item.name %></h1>
-<h1 class="md:text-8xl text-5xl place-content-center text-center"><%= t('.edit_item') %></h1>
+<h1 class="md:text-8xl text-5xl place-content-center text-center border-b border-black"><%= t('.edit_item') %></h1>
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value, class: "alert alert-#{key} px-4 py-3 rounded m-2.5") %>
 <% end %>

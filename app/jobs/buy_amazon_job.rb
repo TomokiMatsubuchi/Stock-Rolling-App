@@ -96,15 +96,13 @@ class BuyAmazonJob < ApplicationJob
   end
 
   def reference_day(send_date)
-    year = Date.today.to_s.scan(/\d+/)[0]
-    date = send_date.scan(/\d+/)
-    reference_day = year + "-" + date.join("-")
-    if reference_day.to_date < Date.today
-      new_year = year.to_i + 1 
-      reference_day = new_year.to_s + "-" + date.join("-")
-      reference_day.to_date
+    year = Date.current.year
+    month_day = send_date.scan(/\d+/)
+    reference_day = "#{year}-#{month_day.join('-')}".to_date
+    if reference_day < Date.current
+      reference_day.years_since(1)
     else
-      reference_day.to_date
+      reference_day
     end
   end
 end
