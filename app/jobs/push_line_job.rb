@@ -2,7 +2,6 @@ require 'line/bot'
 
 class PushLineJob < ApplicationJob
   queue_as :default
-  include Sidekiq::Worker
 
   def perform
     client = Line::Bot::Client.new { |config|
