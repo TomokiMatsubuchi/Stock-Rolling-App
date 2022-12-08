@@ -21,9 +21,9 @@ class PushLineJob < ApplicationJob
             }
         response = client.push_message(user.uid, message)
         p response
-        logger.info response
+        logger.info "PushLineSuccess"
       end
     end
-    logger.info "Lineは送信されませんでした。"
+    logger.info "PushLine Faild"
   end
 end
