@@ -25,12 +25,14 @@ Rails.application.routes.draw do
       @storage = "active_storage/"
       @js = "/packs/js/application"
       @css = "/assets/application"
+      @sidekiq = "sidekiq/"
     end
 
     def matches?(request)
       @storage.include?(request.url)
       @js.include?(request.url)
       @css.include?(request.url)
+      @sidekiq.include?(request.url)
     end
   end
 
