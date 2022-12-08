@@ -25,5 +25,6 @@ class PushLineJob < ApplicationJob
         logger.info responce
       end
     end
+    logger.info "Lineは送信されませんでした。"
   end
 end
