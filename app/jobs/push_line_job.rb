@@ -3,7 +3,7 @@ require 'line/bot'
 class PushLineJob < ApplicationJob
   queue_as :default
 
-  def perform
+  def perform(*args)
     client = Line::Bot::Client.new { |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
@@ -24,6 +24,5 @@ class PushLineJob < ApplicationJob
         logger.info "PushLineSuccess"
       end
     end
-    logger.info "PushLine Faild"
   end
 end
