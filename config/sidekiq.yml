@@ -1,3 +1,4 @@
+:logfile: ./logs/sidekiq.log
 :schedule:
   push_line:
     cron: '0 0/1 * * * *'

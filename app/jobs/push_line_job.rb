@@ -2,6 +2,7 @@ require 'line/bot'
 
 class PushLineJob < ApplicationJob
   queue_as :default
+  include Sidekiq::Job
 
   def perform
     client = Line::Bot::Client.new { |config|
@@ -20,7 +21,8 @@ class PushLineJob < ApplicationJob
               text: "1週間以内に#{names.join(',')}が無くなります。早めの買い足しをオススメします。"
             }
         response = client.push_message(user.uid, message)
-        p response
+        p responce
+        logger.info responce
       end
     end
   end
