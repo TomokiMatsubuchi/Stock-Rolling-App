@@ -20,8 +20,8 @@ class PushLineJob < ApplicationJob
               text: "1週間以内に#{names.join(',')}が無くなります。早めの買い足しをオススメします。"
             }
         response = client.push_message(user.uid, message)
-        p responce
-        logger.info responce
+        p response
+        logger.info response
       end
     end
     logger.info "Lineは送信されませんでした。"
