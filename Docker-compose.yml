@@ -15,11 +15,11 @@ services:
     #entrypoint: ./wait-for-it.sh db:5432
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/myapp
+      - .:/StockRollingApp
       - bundle_data:/usr/local/bundle
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
-      - log-data:/myapp/log
+      - public-data:/StockRollingApp/public
+      - tmp-data:/StockRollingApp/tmp
+      - log-data:/StockRollingApp/log
     ports:
       - "3000:3000"
     depends_on:
@@ -35,8 +35,8 @@ services:
     image: nginx:latest
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
+      - public-data:/StockRollingApp/public
+      - tmp-data:/StockRollingApp/tmp
     ports:
       - "80:80"
     depends_on:
@@ -52,7 +52,7 @@ services:
     build: .
     command: bundle exec sidekiq 
     volumes:
-      - .:/myapp
+      - .:/StockRollingApp
       - bundle_data:/usr/local/bundle
     environment:
       REDIS_URL: redis://redis:6379
