@@ -52,6 +52,9 @@ services:
     command: bundle exec sidekiq
     environment:
       REDIS_URL: redis://redis:6379
+    volumes:
+      - .env:/StockRollingApp/.env
+      - ./rails/master.key:/StockRollingApp/config/master.key
     depends_on:
       - redis
       - db
