@@ -24,7 +24,7 @@ RUN bundle config set force_ruby_platform true
 RUN bundle install
 
 #GithubActionではsecret.ymlがないため以下のコマンドは通らないのでAWS上で実行
-RUN bundle exec rails assets:precompile RAILS_ENV=production
+#RUN bundle exec rails assets:precompile RAILS_ENV=production
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
