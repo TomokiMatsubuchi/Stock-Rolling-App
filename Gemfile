@@ -36,6 +36,8 @@ gem 'omniauth-rails_csrf_protection'
 #環境変数の設定
 gem 'dotenv-rails'
 
+gem 'aws-sdk-s3', require: false
+
 #LINEチャット機能
 gem 'line-bot-api'
 
