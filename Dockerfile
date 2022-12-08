@@ -23,10 +23,8 @@ RUN bundle config set --local disable_checksum_validation true
 RUN bundle config set force_ruby_platform true
 RUN bundle install
 
-#webpacker
-#RUN bundle exec rails webpacker:install
-#RUN bundle exec rails webpacker:compile
-RUN bundle exec rails assets:precompile RAILS_ENV=production
+#GithubActionではsecret.ymlがないため以下のコマンドは通らないのでAWS上で実行
+#RUN bundle exec rails assets:precompile RAILS_ENV=production
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
