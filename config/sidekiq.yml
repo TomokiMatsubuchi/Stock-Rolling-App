@@ -1,6 +1,6 @@
 :schedule:
   push_line:
-    cron: '0 0 12 * * *'
+    cron: '0 0/1 * * * *'
     class: PushLineJob
   buy_amazon:
     cron: '0 0 13 * * *'
