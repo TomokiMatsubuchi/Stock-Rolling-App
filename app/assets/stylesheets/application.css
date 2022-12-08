@@ -189,7 +189,6 @@
     scale: 2;
   }
   #contents{
-    display: flex;
     padding: 40px;
     box-sizing: border-box;
   }
@@ -245,5 +244,13 @@
     margin: 0.5rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+  }
+}
+
+@media screen and (min-width:820px){
+  #contents{
+    display: flex;
+    padding: 40px;
+    box-sizing: border-box;
   }
 }
