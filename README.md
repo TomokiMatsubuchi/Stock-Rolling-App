@@ -24,6 +24,7 @@ Stock Rollerはこの問題を解決するための2つの機能を提供しま�
 
 ## インフラ図 / Infrastructure Image
 ![インフラ図 drawio](https://user-images.githubusercontent.com/109142010/206839880-81f7f727-6515-4ec0-bd1d-3c7c4074d7c5.png)
+- [AWS EC2内のディレクトリツリーはこちら](https://github.com/TomokiMatsubuchi/Stock-Rolling-App/issues/62#issue-1488194590)
 
 
 
