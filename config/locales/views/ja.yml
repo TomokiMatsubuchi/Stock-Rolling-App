@@ -54,7 +54,7 @@ ja:
         line_alert: 'Line通知機能'
         login_id: 'ログインID'
         password: 'パスワード'
-        update: 'アカウント情報の更新'
+        updated: 'アカウント情報の更新'
   admin:
     users:
       index:

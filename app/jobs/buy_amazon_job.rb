@@ -76,6 +76,7 @@ class BuyAmazonJob < ApplicationJob
       login = @driver.find_element(:id, 'ap_password')
       login.send_keys(user.ec_login_password)
       login.submit
+      @driver.get('https://www.amazon.co.jp/')
       unless @driver.title == "Amazon | 本, ファッション, 家電から食品まで | アマゾン"
         message = {
           type: 'text',
