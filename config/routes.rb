@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
-  post '*not_found', to: 'application#routing_error'
+  #post '*not_found', to: 'application#routing_error'
 
   mount Sidekiq::Web, at: '/sidekiq'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

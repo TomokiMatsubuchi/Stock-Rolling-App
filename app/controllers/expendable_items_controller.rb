@@ -13,7 +13,7 @@ class ExpendableItemsController < ApplicationController
   def create
     @expendable_item = ExpendableItem.new(expendable_item_params)
     @expendable_item.user_id = current_user.id
-    @expendable_item.reference_date = Date.today
+    @expendable_item.reference_date = Date.current
     deadline
     if @expendable_item.save
       flash[:notice] = '消耗品の新規登録が完了しました!'
@@ -26,7 +26,7 @@ class ExpendableItemsController < ApplicationController
   def show
     @expendable_item = ExpendableItem.find(params[:id])
     if params[:set_reference_day]
-      reference_date = Date.today
+      reference_date = Date.current
       amount_of_day = @expendable_item.amount_of_product /  @expendable_item.amount_to_use / @expendable_item.frequency_of_use
       deadline_on = reference_date.since(amount_of_day.days)
       @expendable_item.update(deadline_on: deadline_on, reference_date: reference_date)

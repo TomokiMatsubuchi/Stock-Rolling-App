@@ -30,7 +30,7 @@ services:
     environment:
       REDIS_URL: redis://redis:6379
       CHROME_URL: chrome://chrome:4444
-  nginx:
+  web:
     container_name: web
     image: nginx:latest
     volumes:

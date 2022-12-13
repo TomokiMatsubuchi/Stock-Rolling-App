@@ -14,7 +14,7 @@
   <div class="container mx-auto my-5 md:my-10 p-5 md:p-10 flex-center">
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to image_tag("btn_login_base copy.png"), omniauth_authorize_path(resource_name, provider), method: :post %><br />
+        <%= link_to image_tag("btn_login_base copy.png"), omniauth_authorize_path(resource_name, provider), method: :post, id: "line_login" %><br />
       <% end %>
     <% end %>
   </div>
