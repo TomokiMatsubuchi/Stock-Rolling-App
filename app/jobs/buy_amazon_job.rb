@@ -18,7 +18,7 @@ class BuyAmazonJob < ApplicationJob
     options.add_argument('--disable-dev-shm-usage')
 
     #@driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome], options: options
-    driver = Selenium::WebDriver.for :chrome, options: options
+    @driver = Selenium::WebDriver.for :chrome, options: options
 
     @driver.manage.timeouts.implicit_wait = @timeout
     wait = Selenium::WebDriver::Wait.new(timeout: @wait_time)
