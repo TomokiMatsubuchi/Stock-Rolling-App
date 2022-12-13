@@ -4,11 +4,22 @@
 <% end %>
 <div class="container mx-auto">
 
-  <div class="my-10">
-    <p class="text-sm md:text-lg text-center">まず、以下のボタンから友達追加をお願いします。</p>
-    <a href="https://lin.ee/YTbl29b" class="my-5 md:my-10 p-5 md:p-10 flex-center  mx-auto">
-    <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
-    </a>
+  <div class="lg:flex justify-center">
+    <div>
+      <%= image_tag "session_new.jpg", class: "my-5 md:my-10 p-5 md:p-10 text-center about-image rounded" %>
+    </div>
+    <div>
+      <div class="my-5 md:my-10 p-5 md:p-10 text-center">
+        <h3 class="text-3xl md:text-4xl text-left break-words">このアプリケーションについて</h3>
+        <p class="text-left break-words">日常で使う消耗品を予め登録しておくことにより、予期せぬ買い忘れを防ぐことができるアプリです。</p>
+      </div>
+
+      <div class="my-5 md:my-10 p-5 md:p-10 text-center">
+        <h3 class="text-3xl md:text-4xl text-left break-words">このアプリケーションでできること</h3>
+        <p class="text-left break-words">消耗品がなくなりそうになったらLineでリマインドが届きます。</p>
+        <p class="text-left break-words">外部ECサイト(現在はAmazonのみ対応)と連携すると消耗品がなくなりそうなタイミングで自動で購入されます。</p>
+      </div>
+    </div>
   </div>
 
   <div class="container mx-auto my-5 md:my-10 p-5 md:p-10 flex-center">

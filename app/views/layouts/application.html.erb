@@ -44,9 +44,11 @@
               <li><%= link_to t('defaults.shopping_memo'), expendable_items_path %></li>
               <li><%= link_to t('defaults.new_expendable_item'), new_expendable_item_path %></li>
               <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
+              <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
               <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
             <% else %>
               <li><%= link_to t('defaults.visit_login'), new_user_session_path %></li>
+              <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
             <% end %>
           </ul>
         </nav>

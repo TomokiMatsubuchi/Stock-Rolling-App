@@ -9,13 +9,15 @@ class PushLineJob < ApplicationJob
     users.each do |user|
       if user.line_alert == true
         limit_items =  ExpendableItem.where(user_id: user.id).where(deadline_on: limit_seven_days)
-        names = limit_items.map {|item| item.name } 
-        message = {
-              type: 'text',
-              text: "1週間以内に#{names.join(',')}が無くなります。早めの買い足しをオススメします。"
-            }
-        response = line_client.push_message(user.uid, message)
-        logger.info "PushLineSuccess"
+        if limit_items != []
+          names = limit_items.map {|item| item.name } 
+          message = {
+                type: 'text',
+                text: "1週間以内に#{names.join(',')}が無くなります。早めの買い足しをオススメします。"
+              }
+          response = line_client.push_message(user.uid, message)
+          logger.info "PushLineSuccess"
+        end
       end
     end
   end

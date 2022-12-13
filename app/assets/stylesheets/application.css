@@ -126,6 +126,9 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
+  .about-image{
+    width: 100%;
+  }
 }
 
 /*自己実装 */
@@ -247,6 +250,9 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
+  .about-image{
+    width: 35rem;
+  }
 }
 
 @media screen and (min-width:768px) and (max-width:820px){
@@ -282,6 +288,7 @@
   padding-right: 7px;
   margin-right: 10px;
   border-right: ridge;
+  font-size: 12px;
   }
   nav ul li a::after,
   nav ul li a::before {
@@ -338,5 +345,8 @@
     margin: 0.5rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+  }
+  .about-image{
+    width: 100%;
   }
 }
