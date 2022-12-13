@@ -12,7 +12,12 @@ class BuyAmazonJob < ApplicationJob
     Selenium::WebDriver.logger.output = File.join("./", "selenium.log")
     Selenium::WebDriver.logger.level = :warn
 
-    @driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome]
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+
+    @driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome], options: options
 
     @driver.manage.timeouts.implicit_wait = @timeout
     wait = Selenium::WebDriver::Wait.new(timeout: @wait_time)

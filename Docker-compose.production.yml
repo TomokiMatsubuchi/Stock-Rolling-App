@@ -60,7 +60,7 @@ services:
       - db
     tty: true
   chrome:
-    image: seleniarm/standalone-chromium
+    image:  selenium/standalone-chrome
     ports:
       - 4444:4444
       - 7900:7900
