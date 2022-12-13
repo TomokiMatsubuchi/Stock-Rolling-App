@@ -9,7 +9,7 @@
   <div class="container mx-auto justify-center md:border-l-2 md:border-r-2 md:border-black p-3">
     <div class="field text-xl md:text-4xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
       <%= f.label :name, t('.name') %>
-      <%= f.text_field :name, class: "border border-black"%>
+      <%= f.text_field :name, class: "border border-black", placeholder: "your name"%>
     </div>
 
     <div class="field text-2xl md:text-4xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
@@ -25,12 +25,12 @@
 
     <div class="field text-xl md:text-4xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
       <%= f.label :ec_login_id, t('.login_id') %>
-      <%= f.email_field :ec_login_id, class: "border border-black" %>
+      <%= f.email_field :ec_login_id, class: "border border-black", placeholder: "example@gmail.com" %>
     </div>
 
     <div class="field text-xl md:text-4xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
       <%= f.label :ec_login_password, t('.password') %>
-      <%= f.password_field :ec_login_password, class: "border border-black" %>
+      <%= f.password_field :ec_login_password, class: "border border-black", placeholder: "password" %>
     </div>
 
     <div class="actions text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">

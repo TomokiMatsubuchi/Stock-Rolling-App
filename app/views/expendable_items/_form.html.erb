@@ -11,23 +11,23 @@
   <%= form_with(model: expendable_item, local:true) do |form| %>
     <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
       <%= form.label :name, t('.name') %>
-      <%= form.text_field :name, class: "border border-black" %>
+      <%= form.text_field :name, class: "border border-black", placeholder: "商品名"%>
     </div>
     <div class="lg:flex">
       <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
         <%= form.label :amount_of_product, t('.amount_of_product') %>
         <p class="md:block md:h-8"></p>
-        <%= form.text_field :amount_of_product, class: "border border-black" %>
+        <%= form.text_field :amount_of_product, class: "border border-black", placeholder: "500" %>
       </div>
       <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
         <%= form.label :amount_to_use, t('.amount_to_use') %>
         <p class="md:block md:h-8"></p>
-        <%= form.text_field :amount_to_use, class: "border border-black" %>
+        <%= form.text_field :amount_to_use, class: "border border-black", placeholder: "25"  %>
       </div>
       <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
         <%= form.label :frequency_of_use, t('.frequency_of_use') %>
         <p class="block">(1日に何回使用するか)</p>
-        <%= form.text_field :frequency_of_use, class: "border border-black" %>
+        <%= form.text_field :frequency_of_use, class: "border border-black", placeholder: "1" %>
       </div>
     </div>
     <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
@@ -43,7 +43,7 @@
       <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
         <p class="md:block md:h-8"></p>
         <%= form.label :product_url, t('.product_url') %>
-        <%= form.text_field :product_url, class: "border border-black" %>
+        <%= form.text_field :product_url, class: "border border-black", placeholder: "https://example.com" %>
       </div>
     </div>
     <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">

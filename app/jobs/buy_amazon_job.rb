@@ -21,43 +21,45 @@ class BuyAmazonJob < ApplicationJob
     users.each do |user|
       limit_seven_days = Date.today..Time.now.end_of_day + (7.days)
       limit_items =  ExpendableItem.where(user_id: user.id).where(deadline_on: limit_seven_days)
-      if amazon_login(user) != false
-        limit_items.each do |item|
-          if item.auto_buy = "する"
-            @driver.get(item.product_url)
-            buy = @driver.find_element(:id, 'buy-now-button')
-            buy.submit
-            sleep 5
-            buy = @driver.find_element(:name, 'proceedToRetailCheckout')
-            buy.submit
-            sleep 5
-            buy = @driver.find_element(:name, 'placeYourOrder1')
-            buy.click
-            @driver.title
-            if @driver.title == "Amazonより、ありがとうございました"
-              message = {
-                type: 'text',
-                text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
-              }
-              line_message(user, message)
-              send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
-              amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
-              deadline_on = reference_day(send_date).since(amount_of_day.days)
-              item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
-              #item.update(auto_buy: "しない")
-            else
-              message = {
-                type: 'text',
-                text: "登録されている商品URLに不備があるため自動購入できませんでした。"
-              }
-              line_message(user, message)
+      if limit_items != []
+        if amazon_login(user) != false
+          limit_items.each do |item|
+            if item.auto_buy = "する"
+              @driver.get(item.product_url)
+              buy = @driver.find_element(:id, 'buy-now-button')
+              buy.submit
+              sleep 5
+              buy = @driver.find_element(:name, 'proceedToRetailCheckout')
+              buy.submit
+              sleep 5
+              buy = @driver.find_element(:name, 'placeYourOrder1')
+              buy.click
+              @driver.title
+              if @driver.title == "Amazonより、ありがとうございました"
+                message = {
+                  type: 'text',
+                  text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
+                }
+                line_message(user, message)
+                send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
+                amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
+                deadline_on = reference_day(send_date).since(amount_of_day.days)
+                item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
+                #item.update(auto_buy: "しない")
+              else
+                message = {
+                  type: 'text',
+                  text: "登録されている商品URLに不備があるため自動購入できませんでした。"
+                }
+                line_message(user, message)
+              end
             end
           end
         end
+        #logout処理
+        @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout')
+        sleep 5
       end
-      #logout処理
-      @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout')
-      sleep 5
     end
     @driver.quit
   end

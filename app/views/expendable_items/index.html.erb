@@ -26,8 +26,8 @@
         <%= t('.day') %>
       </div>
       <div class="text-lg md:text-xl m-2 flex justify-center whitespace-nowrap">
-        <%= link_to t('.show'), expendable_item_path(item.id), class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded"%>
-        <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'}, class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded" %>
+        <%= link_to t('.show'), expendable_item_path(item.id), class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded show-item"%>
+        <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'}, class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded destroy-item" %>
       </div>
     </div>
   <% end %>
