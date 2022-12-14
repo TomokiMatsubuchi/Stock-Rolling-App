@@ -31,30 +31,40 @@ class BuyAmazonJob < ApplicationJob
         if amazon_login(user) != false
           limit_items.each do |item|
             if item.auto_buy = "する"
-              @driver.get(item.product_url)
-              buy = @driver.find_element(:id, 'buy-now-button')
-              buy.submit
-              sleep 5
-              buy = @driver.find_element(:name, 'proceedToRetailCheckout')
-              buy.submit
-              sleep 5
-              buy = @driver.find_element(:name, 'placeYourOrder1')
-              buy.click
-              if @driver.title.include? "ありがとうございました"
+              begin
+                byebug
+                @driver.get(item.product_url)
+                buy = @driver.find_element(:id, 'buy-now-button')
+                buy.submit
+                sleep 5
+                buy = @driver.find_element(:name, 'proceedToRetailCheckout')
+                buy.submit
+                sleep 5
+                buy = @driver.find_element(:name, 'placeYourOrder1')
+                buy.click
+                if @driver.title.include? "ありがとうございました"
+                  message = {
+                    type: 'text',
+                    text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
+                  }
+                  line_message(user, message)
+                  send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
+                  @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text
+                  amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
+                  deadline_on = reference_day(send_date).since(amount_of_day.days)
+                  item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
+                else
+                  message = {
+                    type: 'text',
+                    text: "なんらかの不具合により自動購入できませんでした。"
+                  }
+                  line_message(user, message)
+                end
+              rescue
+                logger.info "Amazon購入にて障害発生"
                 message = {
                   type: 'text',
-                  text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
-                }
-                line_message(user, message)
-                send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
-                @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text
-                amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
-                deadline_on = reference_day(send_date).since(amount_of_day.days)
-                item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
-              else
-                message = {
-                  type: 'text',
-                  text: "登録されている商品URLに不備があるため自動購入できませんでした。"
+                  text: "登録されている商品URLに不備があるかセッションタイムアウトのため自動購入できませんでした。"
                 }
                 line_message(user, message)
               end
@@ -72,24 +82,24 @@ class BuyAmazonJob < ApplicationJob
   private
 
   def amazon_login(user)
-    @driver.get('https://www.amazon.co.jp/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.co.jp%2Fref%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=jpflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&')
-    if user.ec_login_id.present? && user.ec_login_password.present?
-      login = @driver.find_element(:id, 'ap_email')
-      login.send_keys(user.ec_login_id)
-      login.submit
-      sleep 5
-      login = @driver.find_element(:id, 'ap_password')
-      login.send_keys(user.ec_login_password)
-      login.submit
-      @driver.get('https://www.amazon.co.jp/')
-      if @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text.include? "ログイン"
-        message = {
-          type: 'text',
-          text: "ecサイトのログインIDまたはパスワードに不備があるため自動購入できませんでした。"
-        }
-        line_message(user, message)
-        return false
+    begin
+      @driver.get('https://www.amazon.co.jp/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.co.jp%2Fref%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=jpflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&')
+      if user.ec_login_id.present? && user.ec_login_password.present?
+        login_email = @driver.find_element(:name, 'email')
+        login_email.send_keys(user.ec_login_id)
+        if @driver.find_elements(:id, 'continue').size >= 1
+          @driver.find_element(:id, 'continue').click
+        end
+        login_password = @driver.find_element(:name, 'password')
+        login_password.send_keys(user.ec_login_password)
+        login_submit = @driver.find_element(:id, 'signInSubmit')
+        login_submit.click
+        sleep 5
+        login?(user)
       end
+    rescue
+      logger.info "Amazonログインにて障害発生"
+      false
     end
   end
 
@@ -113,4 +123,22 @@ class BuyAmazonJob < ApplicationJob
       reference_day
     end
   end
+
+  def login?(user)
+    begin
+      @driver.get('https://www.amazon.co.jp/')
+      if @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text.include? "ログイン"
+        message = {
+          type: 'text',
+          text: "ecサイトのログインIDまたはパスワードに不備があるため自動購入できませんでした。"
+        }
+        line_message(user, message)
+        false  
+      end
+    rescue
+      true
+    end
+  end
+  
 end
+#スクリーンショット: @driver.save_screenshot('File01.jpg')
