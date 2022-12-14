@@ -82,7 +82,6 @@ class BuyAmazonJob < ApplicationJob
       login.submit
       @driver.get('https://www.amazon.co.jp/')
       if @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text.include? "ログイン"
-        byebug
         message = {
           type: 'text',
           text: "ecサイトのログインIDまたはパスワードに不備があるため自動購入できませんでした。"
