@@ -17,8 +17,7 @@ class BuyAmazonJob < ApplicationJob
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
-    #@driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome], options: options
-    @driver = Selenium::WebDriver.for :chrome, options: options
+    @driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome], options: options
 
     @driver.manage.timeouts.implicit_wait = @timeout
     wait = Selenium::WebDriver::Wait.new(timeout: @wait_time)
@@ -40,18 +39,17 @@ class BuyAmazonJob < ApplicationJob
               sleep 5
               buy = @driver.find_element(:name, 'placeYourOrder1')
               buy.click
-              @driver.title
-              if @driver.title == "Amazonより、ありがとうございました"
+              if @driver.title.include? "ありがとうございました"
                 message = {
                   type: 'text',
                   text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
                 }
                 line_message(user, message)
                 send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
+                @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text
                 amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
                 deadline_on = reference_day(send_date).since(amount_of_day.days)
                 item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
-                #item.update(auto_buy: "しない")
               else
                 message = {
                   type: 'text',
@@ -83,7 +81,8 @@ class BuyAmazonJob < ApplicationJob
       login.send_keys(user.ec_login_password)
       login.submit
       @driver.get('https://www.amazon.co.jp/')
-      unless @driver.title == "Amazon | 本, ファッション, 家電から食品まで | アマゾン"
+      if @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text.include? "ログイン"
+        byebug
         message = {
           type: 'text',
           text: "ecサイトのログインIDまたはパスワードに不備があるため自動購入できませんでした。"
