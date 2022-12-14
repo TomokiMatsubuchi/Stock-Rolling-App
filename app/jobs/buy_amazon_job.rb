@@ -16,6 +16,7 @@ class BuyAmazonJob < ApplicationJob
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--window-size=1280x800')
 
     @driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome], options: options
 
