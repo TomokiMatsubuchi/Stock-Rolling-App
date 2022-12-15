@@ -157,6 +157,12 @@
   border-width: 1px;
   text-decoration-color: #b91c1c;
 }
+.alert-alert{
+  background-color: #fca5a5;
+  border-color: #ef4444;
+  border-width: 1px;
+  text-decoration-color: #b91c1c;
+}
 .pagination * {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -257,7 +263,7 @@
 
 @media screen and (min-width:768px) and (max-width:820px){
   .ipad-h1{
-    font-size: 5rem;
+    font-size: 4rem;
   }
   #contents{
     display: block;
