@@ -20,25 +20,6 @@ Rails.application.routes.draw do
   resources :expendable_items
 
 
-  class ErrorAvoid
-    def initialize
-      @storage = "active_storage/"
-      @js = "/packs/js/application"
-      @css = "/assets/application"
-      @sidekiq = "sidekiq/"
-    end
-
-    def matches?(request)
-      @storage.include?(request.url)
-      @js.include?(request.url)
-      @css.include?(request.url)
-      @sidekiq.include?(request.url)
-    end
-  end
-
-  get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
-  post '*not_found', to: 'application#routing_error'
-
   mount Sidekiq::Web, at: '/sidekiq'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

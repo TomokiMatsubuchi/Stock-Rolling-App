@@ -77,6 +77,6 @@ class ExpendableItemsController < ApplicationController
     @expendable_item = ExpendableItem.find(params[:id])
     user = User.find(@expendable_item.user_id)
     return if user_admin?
-    redirect_to expendable_items_path, flash: {warn: "本人以外アクセスできません"} unless current_user?(user)
+    redirect_to expendable_items_path, flash: {warn: "アクセス権限がありません"} unless current_user?(user)
   end
 end
