@@ -65,11 +65,6 @@ class BuyAmazonJob < ApplicationJob
                 end
               rescue
                 logger.info "Amazon購入にて障害発生"
-                message = {
-                  type: 'text',
-                  text: "登録されている商品URLに不備があるかセッションタイムアウトのため自動購入できませんでした。"
-                }
-                line_message(user, message)
               end
             end
           end
