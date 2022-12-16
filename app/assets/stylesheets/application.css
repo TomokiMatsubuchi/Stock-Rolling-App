@@ -210,7 +210,6 @@
   }
   #main{
     box-sizing: border-box;
-    height: 2000px;
     flex: 1;
   }
   #header{
