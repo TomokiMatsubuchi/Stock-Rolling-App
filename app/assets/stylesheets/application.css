@@ -113,12 +113,13 @@
     font-size: 0.7rem;
   }
   .logo-width{
-    width: 42px;
+    width: 34px;
   }
   .logo{
     position: absolute;
     top: 20px;
     left: 15px;
+    z-index: 999;
   }
   .pagination{
     display: flex;
@@ -128,6 +129,10 @@
   }
   .about-image{
     width: 100%;
+  }
+  .none_md
+  {
+    display: none;
   }
 }
 
@@ -208,46 +213,45 @@
     height: 2000px;
     flex: 1;
   }
-  #sub{
-    box-sizing: border-box;
-    width: 150px;
-    background: #FFF;
-    margin-left: 40px;
+  #header{
+    height: 70px;/*高さ指定*/
+    width:100%;/*横幅指定*/
+    /*以下はレイアウトのためのCSS*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:#333;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
   }
-  #sub .box{
-    position: sticky;
-    top: 25px;
-    width: 100%;
-    height: 300px;
-    background: #CCC;
+  #header.fixed{
+    position: fixed;/*fixedを設定して固定*/
+    z-index: 999;/*最前面へ*/
+    top:0;/*位置指定*/
+    left:0;/*位置指定*/
   }
-  .box ul{
-    background: #ccc;
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
-  }
-  .box ul li{
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    border-bottom: 1px solid #fff;
-  }
-  .box ul li a{
-    display: block;
-    color: #000;
-    padding: 1em 0;
-    text-decoration :none;
-  }
-  .box ul li:hover{
-    background :#ddd;
-  }
+  nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    }
+    
+    nav ul li a{
+    text-decoration: none;
+    color: #FFF;
+    padding:10px;
+    }
+    
+    section{
+    padding:300px 0;
+    }
   body{
     margin: 0;
     padding: 0;
   }
   .logo-width{
-    width: 150px;
+    width: 320px;
   }
   .pagination{
     display: flex;
@@ -258,6 +262,9 @@
   }
   .about-image{
     width: 35rem;
+  }
+  .none_sm{
+    display: none;
   }
 }
 
@@ -283,67 +290,41 @@
     display: block;
     width: 28%;
   }
+  #header{
+    height: 70px;/*高さ指定*/
+    width:100%;/*横幅指定*/
+    /*以下はレイアウトのためのCSS*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:#333;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+  }
+  #header.fixed{
+    position: fixed;/*fixedを設定して固定*/
+    z-index: 999;/*最前面へ*/
+    top:0;/*位置指定*/
+    left:0;/*位置指定*/
+  }
   nav ul{
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
-  }
-  nav ul li{
-  display: inline-block;
-  position: relative;
-  padding-right: 7px;
-  margin-right: 10px;
-  border-right: ridge;
-  font-size: 12px;
-  }
-  nav ul li a::after,
-  nav ul li a::before {
-  display: block;
-  content: ”;
-  position: absolute;
-  }
-  nav ul li a::after {
-  top: 10%;
-  right: 0;
-  width: 13px;
-  height: 13px;
-  background-color: #ccc;
-  border-radius: 100%;
-  }
-  nav ul li a.current::after,
-  nav ul li a:hover:after{
-  background-color: #3498db;
-  }
-  nav ul li a::before {
-  z-index: 2;
-  top: 40%;
-  right: 5px;
-  width: 5px;
-  height: 5px;
-  border-right: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  }
-  nav ul li a{
-  text-decoration: none;
-  color: black;
-  display: inline-block;
-  width: 100%;
-  }
-  nav ul li a.current{
-  color:#555;
-  }
-  nav ul li a:hover{
-  color:#555;
-  }
-  #sub{
-    position: absolute;
-    top: 105px;
-    right: 4px;
-  }
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    }
+    
+    nav ul li a{
+    text-decoration: none;
+    color: #FFF;
+    padding:10px;
+    }
+    
+    section{
+    padding:300px 0;
+    }
   .logo-width{
-    width: 150px;
+    width: 320px;
   }
   .pagination{
     display: flex;
@@ -354,5 +335,8 @@
   }
   .about-image{
     width: 100%;
+  }
+  .none_sm{
+    display: none;
   }
 }
