@@ -6,7 +6,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="container mx-auto justify-center md:border-l-2 md:border-r-2 md:border-black p-3">
+  <div class="container mx-auto justify-center p-3">
     <div class="field text-xl md:text-4xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
       <%= f.label :name, t('.name') %>
       <%= f.text_field :name, class: "border border-black", placeholder: "your name"%>
