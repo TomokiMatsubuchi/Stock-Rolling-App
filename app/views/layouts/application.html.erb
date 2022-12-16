@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="min-h-screen flex flex-col">
     <div id="contents">
       <header class="flex jutsify-between">
         <div class="logo">
@@ -23,11 +23,8 @@
           <% end %>
         </div>
       </header>
-      <main id="main">
+      <main id="main" class="md:border-l-2 md:border-r-2 md:border-black min-h-screen">
         <%= yield %>
-        <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black">
-          <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
-        </div>
       </main>
       <div class="hamburger">
         <span></span>
@@ -53,6 +50,9 @@
           </ul>
         </nav>
       </div>
+    </div>
+    <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black mt-auto">
+      <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
     </div>
   </body>
 </html>
