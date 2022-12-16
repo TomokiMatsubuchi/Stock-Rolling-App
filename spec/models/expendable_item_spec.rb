@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ExpendableItem, type: :model do
-  let!(:user){FactoryBot.create(:user_1)}
+  user = User.find_by(email: "sample_taro@example.com") || FactoryBot.create(:user_1)
   describe "バリデーションのテスト" do
     context "消耗品情報が全てある場合" do
       it "消耗品情報が登録できる" do
