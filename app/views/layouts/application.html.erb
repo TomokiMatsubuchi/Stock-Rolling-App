@@ -13,43 +13,50 @@
   </head>
 
   <body class="min-h-screen flex flex-col">
-    <div id="contents">
-      <header class="flex jutsify-between">
-        <div class="logo">
+    <header id="header">
+      <div class="flex justify-center">
+        <div class="logo none_sm">
           <% if user_signed_in? %>
-            <%= link_to image_tag('logo_transparent.png', class: "logo-width"), expendable_items_path  %>
+            <%= link_to image_tag('logo.png', class: "logo-width"), expendable_items_path  %>
           <% else %>
-            <%= link_to image_tag('logo_transparent.png', class: "logo-width"), new_user_session_path  %>
+            <%= link_to image_tag('logo.png', class: "logo-width"), new_user_session_path  %>
           <% end %>
         </div>
-      </header>
-      <main id="main" class="md:border-l-2 md:border-r-2 md:border-black min-h-screen">
-        <%= yield %>
-      </main>
+        <div class="logo none_md">
+          <% if user_signed_in? %>
+            <%= link_to image_tag('large_logo.jpg', class: "logo-width"), expendable_items_path  %>
+          <% else %>
+            <%= link_to image_tag('large_logo.jpg', class: "logo-width"), new_user_session_path  %>
+          <% end %>
+        </div>
+      </div>
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div id="sub">
-        <nav class="globalMenuSp box">
-          <ul class="whitespace-nowrap">
-            <% if user_signed_in? %>
-              <% if user_admin? %>
-                <li><%= link_to t('defaults.admin_page'), admin_users_path %></li>
-              <% end %>
-              <li><%= link_to t('defaults.shopping_memo'), expendable_items_path %></li>
-              <li><%= link_to t('defaults.new_expendable_item'), new_expendable_item_path %></li>
-              <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
-              <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Welcome to Stock Roller', new_user_session_path, class: 'md:text-xs'%></li>
-              <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
+      <nav class="globalMenuSp md-navi">
+        <ul class="whitespace-nowrap">
+          <% if user_signed_in? %>
+            <% if user_admin? %>
+              <li><%= link_to t('defaults.admin_page'), admin_users_path %></li>
             <% end %>
-          </ul>
-        </nav>
-      </div>
+            <li><%= link_to t('defaults.shopping_memo'), expendable_items_path %></li>
+            <li><%= link_to t('defaults.new_expendable_item'), new_expendable_item_path %></li>
+            <li><%= link_to 'myaccount', user_path(current_user.id) %></li>
+            <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
+            <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Welcome to Stock Roller', new_user_session_path, class: 'md:text-xs'%></li>
+            <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <div id="contents">
+      <main id="main" class="md:border-l-2 md:border-r-2 md:border-black min-h-screen">
+        <%= yield %>
+      </main>
     </div>
     <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black mt-auto">
       <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
