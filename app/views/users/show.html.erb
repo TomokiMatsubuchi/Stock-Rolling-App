@@ -22,7 +22,7 @@
       <%= link_to t('.edit'), edit_user_registration_path, class: "m-2 bg-green-200 text-black py-2 px-2 rounded md:text-xl lg:text-4xl" %>
     </div>
     <div class="m-2 p-2 md:m-1 md:p-1 whitespace-nowrap">
-      <%= link_to t('.delete'), user_registration_path(current_user.id), method: :delete, data: {confirm: t('本当にアカウント情報を削除しますか?')}, class: "m-2 bg-red-200 text-black py-2 px-2 rounded md:text-xl lg:text-4xl" %>
+      <%= link_to t('.delete'), user_registration_path(current_user.id), method: :delete, data: {confirm: '本当にアカウント情報を削除しますか?'}, class: "m-2 bg-red-200 text-black py-2 px-2 rounded md:text-xl lg:text-4xl" %>
     </div>
   </div>
 </div>

@@ -19,7 +19,7 @@
         <td><%= user.expendable_items.count %></td>
         <td><%= user.line_alert ? "ON" : "OFF" %></td>
         <td><%= user.ec_login_id.present? ? "あり" : "なし" %></td>
-        <td><%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: t('本当に削除しますか？')}, class: "sm:m-1 bg-red-200 text-black py-2 px-1 rounded sm-admin md:text-2xl lg:text-4xl" %></td>
+        <td><%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: '本当に削除しますか？'}, class: "sm:m-1 bg-red-200 text-black py-2 px-1 rounded sm-admin md:text-2xl lg:text-4xl" %></td>
       </tr>
     <% end %>
   </tbody>
