@@ -212,9 +212,8 @@
     flex: 1;
   }
   #header{
-    height: 70px;/*高さ指定*/
-    width:100%;/*横幅指定*/
-    /*以下はレイアウトのためのCSS*/
+    height: 70px;
+    width:100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -224,10 +223,10 @@
     padding: 20px;
   }
   #header.fixed{
-    position: fixed;/*fixedを設定して固定*/
-    z-index: 999;/*最前面へ*/
-    top:0;/*位置指定*/
-    left:0;/*位置指定*/
+    position: fixed;
+    z-index: 999;
+    top:0;
+    left:0;
   }
   nav ul{
     list-style: none;
@@ -289,9 +288,8 @@
     width: 28%;
   }
   #header{
-    height: 70px;/*高さ指定*/
-    width:100%;/*横幅指定*/
-    /*以下はレイアウトのためのCSS*/
+    height: 70px;
+    width:100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -301,10 +299,10 @@
     padding: 20px;
   }
   #header.fixed{
-    position: fixed;/*fixedを設定して固定*/
-    z-index: 999;/*最前面へ*/
-    top:0;/*位置指定*/
-    left:0;/*位置指定*/
+    position: fixed;
+    z-index: 999;
+    top:0;
+    left:0;
   }
   nav ul{
     list-style: none;

@@ -70,8 +70,7 @@ class BuyAmazonJob < ApplicationJob
           end
         end
         sleep 5
-        #logout処理
-        @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout')
+        logout = @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout')
         sleep 5
       end
     end
@@ -146,4 +145,4 @@ class BuyAmazonJob < ApplicationJob
   end
   
 end
-#スクリーンショット: @driver.save_screenshot('tmp/File01.jpg')
+
