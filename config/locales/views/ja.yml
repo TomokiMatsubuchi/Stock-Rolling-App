@@ -4,7 +4,8 @@ ja:
     shopping_memo: 'お買い物メモ'
     new_expendable_item: '新規消耗品の登録'
     visit_login: 'ログインはこちら'
-    add_line: "LINE友達追加"
+    add_line: 'LINE友達追加'
+    about_app: 'アプリの使い方'
   expendable_items:
     index:
       shopping_index: 'お買い物リスト'

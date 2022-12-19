@@ -48,6 +48,7 @@
             <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
           <% else %>
             <li><%= link_to 'Welcome to Stock Roller', new_user_session_path, class: 'md:text-xs'%></li>
+            <li><%= link_to t('defaults.about_app'), about_app_index_path %></li>
             <li><%= link_to t('defaults.add_line'), 'https://lin.ee/YTbl29b' %></li>
           <% end %>
         </ul>

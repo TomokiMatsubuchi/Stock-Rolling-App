@@ -28,9 +28,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
-    current_user.destroy
-    flash[:notice] = 'アカウントを削除しました。'
-    redirect_to root_path
+    if current_user.destroy
+      flash[:notice] = 'アカウントを削除しました。'
+      redirect_to root_path
+    else
+      flash[:error] = '管理者が0人になってしまうため削除できません。'
+      redirect_to user_path(current_user.id)
+      end
   end
 
   # GET /resource/cancel
