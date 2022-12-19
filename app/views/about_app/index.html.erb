@@ -1,7 +1,8 @@
-<h2 class="md:text-6xl text-2xl place-content-center text-center whitespace-nowrap mt-6 border-b border-black ipad-h1">このアプリの使い方について</h2>
+<h2 class="md:text-6xl text-2xl place-content-center text-center whitespace-nowrap mt-6 border-b border-black ipad-h1"><%= t('.about_app') %></h2>
 <div class="container mx-auto">
   <div>
     <h3 class="md:text-4xl text-xl text-center whitespace-nowrap mt-6 ipad-h1">新規消耗品登録について</h3>
+    <%= image_tag "item_new.png", class: "my-5 md:my-10 p-5 md:p-10 text-center about-image rounded-3xl mx-auto" %>
     <div class="my-5 md:my-10 p-5 md:p-10 text-left break-words">
       <p>新しく消耗品を登録する際には「商品名」「内容量」「1回で使用する量」「使用頻度」を必ず入力する必要があります。</p>
       <p>この時、「内容量」「1回で使用する量」「使用頻度」については数字で入力してください。</p>
@@ -11,6 +12,7 @@
   </div>
   <div>
     <h3 class="md:text-4xl text-xl text-center whitespace-nowrap mt-6 ipad-h1">LINE通知機能について</h3>
+    <%= image_tag "LINE_image.png", class: "my-5 md:my-10 p-5 md:p-10 text-center about-image rounded-3xl mx-auto" %>
     <div class="my-5 md:my-10 p-5 md:p-10 text-left break-words">
       <p>毎日12時になると、LINEにて消費完了日が1週間以内の商品がある場合にその商品の名前をリマインド通知します。</p>
       <p>リマインド通知を受け取るためには、右上のナビゲーションから友達追加をしてください。</p>
