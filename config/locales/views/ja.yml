@@ -71,5 +71,8 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+  about_app:
+    index:
+      about_app: 'このアプリの使い方について'
 
 
