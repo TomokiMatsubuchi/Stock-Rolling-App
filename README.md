@@ -1,7 +1,7 @@
 ## README
 
 ## Stock Roller
-![facebook_cover_photo_2](https://user-images.githubusercontent.com/109142010/206126785-c8e09255-e155-4ba8-9e12-70fc1bc6de01.png)
+[![facebook_cover_photo_2](https://user-images.githubusercontent.com/109142010/206126785-c8e09255-e155-4ba8-9e12-70fc1bc6de01.png)](https://stock-roller.work/)
 
 ## 製品概要 / Overview
 日常生活の中で日々使っていくシャンプーや石鹸、洗剤などの日用品が気づいたときに空っぽになっていたという経験はありませんか?<br>
