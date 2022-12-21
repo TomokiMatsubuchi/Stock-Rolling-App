@@ -24,8 +24,8 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
     - name: Build the Docker image
       run: docker build --file Dockerfile --no-cache --tag ${{ env.ECR_REPOSITORY }} .
-      with:
-        secret_key_base: ${{ secrets.SECRET_KEY_BASE }}
+        with:
+          secret_key_base: ${{ secrets.SECRET_KEY_BASE }}
     - uses: docker/setup-buildx-action@v1
     - uses: actions/cache@v2
       with:
