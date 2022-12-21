@@ -348,7 +348,6 @@
   }
   .background{
     background: url('session_new.jpg') center no-repeat;
-    background-attachment: fixed;
     background-size: cover;
     background-position: center;
     min-height: 50vh;
