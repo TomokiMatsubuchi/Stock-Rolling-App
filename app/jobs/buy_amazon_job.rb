@@ -80,27 +80,31 @@ class BuyAmazonJob < ApplicationJob
   private
 
   def amazon_login(user)
-    begin
-      @driver.get('https://www.amazon.co.jp/gp/help/customer/display.html?nodeId=201909000')
-      sleep 5
-      @driver.get('https://www.amazon.co.jp/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.co.jp%2Fref%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=jpflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&')
-      sleep 5
-      if user.ec_login_id.present? && user.ec_login_password.present?
-        login_email = @driver.find_element(:name, 'email').send_keys(user.ec_login_id)
+    if user.ec_login_id.present? && user.ec_login_password.present?
+      begin
+        @driver.get('https://www.amazon.co.jp/gp/help/customer/display.html?nodeId=201909000')
         sleep 5
-        if @driver.find_elements(:id, 'continue').size >= 1
+        @driver.get('https://www.amazon.co.jp/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.co.jp%2Fref%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=jpflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&')
+        sleep 5
+        if user.ec_login_id.present? && user.ec_login_password.present?
+          login_email = @driver.find_element(:name, 'email').send_keys(user.ec_login_id)
           sleep 5
-          @driver.find_element(:id, 'continue').click
+          if @driver.find_elements(:id, 'continue').size >= 1
+            sleep 5
+            @driver.find_element(:id, 'continue').click
+          end
+          sleep 5
+          login_password = @driver.find_element(:name, 'password').send_keys(user.ec_login_password)
+          sleep 5
+          login_submit = @driver.find_element(:id, 'signInSubmit').click
+          sleep 5
+          login?(user)
         end
-        sleep 5
-        login_password = @driver.find_element(:name, 'password').send_keys(user.ec_login_password)
-        sleep 5
-        login_submit = @driver.find_element(:id, 'signInSubmit').click
-        sleep 5
-        login?(user)
+      rescue
+        logger.info "Amazonログインにて障害発生"
+        false
       end
-    rescue
-      logger.info "Amazonログインにて障害発生"
+    else
       false
     end
   end
@@ -143,6 +147,5 @@ class BuyAmazonJob < ApplicationJob
       true
     end
   end
-  
 end
 
