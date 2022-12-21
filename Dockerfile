@@ -12,7 +12,6 @@ RUN npm install --global yarn
 
 
 COPY . /StockRollingApp
-#RUN yarn add tailwindcss@2 postcss@8 @fullhuman/postcss-purgecss@4 postcss-loader@4 autoprefixer@10
 RUN yarn add jquery
 # gem
 COPY ./Gemfile /StockRollingApp
