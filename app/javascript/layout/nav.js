@@ -22,7 +22,6 @@ document.addEventListener('turbolinks:load', function() {
     $(window).scroll(function () {
         FixedAnime();
     });
-    
     $(window).on('load', function () {
         FixedAnime();
     });

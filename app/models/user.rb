@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
   has_many :expendable_items, dependent: :destroy
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: %i[line]
@@ -25,19 +23,17 @@ class User < ApplicationRecord
     access_secret = credentials["secret"]
     credentials = credentials.to_json
     name = info["name"]
-    # self.set_values_by_raw_info(omniauth['extra']['raw_info'])
   end
 
   def set_values_by_raw_info(raw_info)
     self.raw_info = raw_info.to_json
     self.save!
   end
-  # 以上を追加
 
   def not_destroy_no_admin
     if User.where(admin: true).count == 1 && self.admin == true
       errors.add(:base, "管理者が0人になるため削除できません")
-      throw :abort #処理の停止
+      throw :abort
     end
   end
 end

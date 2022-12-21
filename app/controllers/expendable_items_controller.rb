@@ -1,9 +1,9 @@
 class ExpendableItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user_expendable_item, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user_expendable_item, only: %i[show edit update destroy]
 
   def index
-    @expendable_items = current_user.expendable_items.order("deadline_on ASC").page(params[:page])
+    @expendable_items = current_user.expendable_items.order('deadline_on ASC').page(params[:page])
   end
 
   def new
