@@ -133,6 +133,17 @@
   {
     display: none;
   }
+  .background{
+    background-image: url('session_new.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  .background h2{
+    font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+    color: gray;
+  }
 }
 
 /*自己実装 */
@@ -263,6 +274,17 @@
   .none_sm{
     display: none;
   }
+  .background{
+    background-image: url('session_new.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+  }
+  .background h2{
+    font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+    color: gray;
+  }
 }
 
 @media screen and (min-width:768px) and (max-width:820px){
@@ -334,5 +356,16 @@
   }
   .none_sm{
     display: none;
+  }
+  .background{
+    background-image: url('session_new.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh;
+  }
+  .background h2{
+    font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+    color: gray;
   }
 }

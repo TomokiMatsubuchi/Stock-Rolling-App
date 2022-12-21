@@ -1,13 +1,14 @@
-<h2 class="md:text-6xl text-2xl place-content-center text-center whitespace-nowrap mt-6 border-b border-black ipad-h1">Welcome to Stock Roller</h2>
+<div class="background flex justify-center items-center">
+  <%= image_tag "logo.png", class: "w-24 md:w-72 " %>  
+  <h2 class="md:text-6xl text-2xl place-content-center whitespace-nowrap mt-6 ipad-h1">Stock Roller</h2>
+</div>
+
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value, class: "alert alert-#{key} px-4 py-3 rounded m-2.5") %>
 <% end %>
 <div class="container mx-auto">
 
   <div class="lg:flex justify-center">
-    <div>
-      <%= image_tag "session_new.jpg", class: "my-5 md:my-10 p-5 md:p-10 text-center about-image rounded-3xl mx-auto" %>
-    </div>
     <div>
       <div class="my-5 md:my-10 p-5 md:p-10 text-center">
         <h3 class="text-3xl md:text-4xl text-left break-words">このアプリケーションについて</h3>

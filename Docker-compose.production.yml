@@ -60,7 +60,7 @@ services:
       - db
     tty: true
   chrome:
-    image:  selenium/standalone-chrome #ec2上で使用するためchromeに変更
+    image: selenium/standalone-chrome
     ports:
       - 4444:4444
       - 7900:7900
