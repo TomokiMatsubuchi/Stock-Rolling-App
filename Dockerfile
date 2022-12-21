@@ -22,8 +22,8 @@ RUN bundle config set --local disable_checksum_validation true
 RUN bundle config set force_ruby_platform true
 RUN bundle install
 
-#GithubActionではsecret.ymlがないため以下のコマンドは通らないのでAWS上で実行
-RUN bundle exec rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=dummy
+ARG RAILS_MASTER_KEY
+RUN bundle exec rails assets:precompile RAILS_ENV=production RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
