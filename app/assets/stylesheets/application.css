@@ -204,7 +204,8 @@
   }
   #contents{
     display: flex;
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     box-sizing: border-box;
   }
   #main{
@@ -281,7 +282,8 @@
   }
   #contents{
     display: block;
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     box-sizing: border-box;
   }
   .wrap{
