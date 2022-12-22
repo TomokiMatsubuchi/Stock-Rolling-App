@@ -10,20 +10,21 @@
 
   <div class="lg:flex justify-center">
     <div>
-      <div class="my-5 md:my-10 p-5 md:p-10 text-center">
-        <h3 class="text-3xl md:text-4xl text-left break-words">このアプリケーションについて</h3>
-        <p class="text-left break-words">日常で使う消耗品を予め登録しておくことにより、予期せぬ買い忘れを防ぐことができるアプリです。</p>
+      <div class="my-5 md:my-10 p-5 md:p-10 text-center" data-aos="fade-up">
+        <p class="text-center break-words">日常生活の中で日々使っていくシャンプーや石鹸、洗剤などの日用品が気づいたときに空っぽになっていたという経験はありませんか?</p>
+        <p class="text-center break-words">また、買い物は意外と時間がかかりますし、必要なものを買いに行くためだけにわざわざ外出するとなるとやる気も起きません。</p>
       </div>
 
-      <div class="my-5 md:my-10 p-5 md:p-10 text-center">
-        <h3 class="text-3xl md:text-4xl text-left break-words">このアプリケーションでできること</h3>
-        <p class="text-left break-words">消耗品がなくなりそうになったら毎日12時にLineでリマインドが届きます。</p>
-        <p class="text-left break-words">外部ECサイト(現在はAmazonのみ対応)と連携すると消耗品がなくなりそうなタイミングで自動で購入されます。</p>
+      <div class="my-5 md:my-10 text-center" data-aos="fade-up">
+        <p class="text-center break-words">Stock Rollerはこの問題を解決するための2つの機能を提供します。</p>
+        <p class="text-center break-words">①使用している日用品をあらかじめ登録しておくことで無くなる1週間前からLINEでリマインドを送信します。</p>
+        <p class="text-center break-words">②時間を有効活用したい方向けにECサイト(現在はamazonのみ対応)の情報を登録しておくと自動で購入してくれます。</p>
+        <p class="text-center break-words">上記2点の機能により、あなたの買い物に煩わされる時間を減らし生活を豊かにするお手伝いをします。</p>
       </div>
     </div>
   </div>
 
-  <div class="container mx-auto my-5 md:my-10 p-5 md:p-10 flex-center">
+  <div class="container mx-auto my-5 md:my-10 p-5 md:p-10 flex-center" data-aos="zoom-in">
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>
         <%= link_to image_tag("btn_login_base copy.png"), omniauth_authorize_path(resource_name, provider), method: :post, id: "line_login" %><br />
