@@ -20,7 +20,6 @@ class BuyAmazonJob < ApplicationJob
     ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     options.add_argument("--user-agent=#{ua}")
 
-
     @driver = Selenium::WebDriver.for :remote, url: 'http://chrome:4444/wd/hub', capabilities: [:chrome], options: options
 
     @driver.manage.timeouts.implicit_wait = @timeout
@@ -148,4 +147,3 @@ class BuyAmazonJob < ApplicationJob
     end
   end
 end
-
