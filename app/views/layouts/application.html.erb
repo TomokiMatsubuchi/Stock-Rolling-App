@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= favicon_link_tag('logo.png') %>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -60,6 +61,10 @@
     <div class="flex justify-center mb-5 p-10 text-xl border-t border-b border-black mt-auto">
       <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
 
