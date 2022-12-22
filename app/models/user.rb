@@ -30,6 +30,10 @@ class User < ApplicationRecord
     self.save!
   end
 
+  def remember_me
+    false
+  end
+
   def not_destroy_no_admin
     if User.where(admin: true).count == 1 && self.admin == true
       errors.add(:base, "管理者が0人になるため削除できません")
