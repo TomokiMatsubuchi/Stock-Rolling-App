@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= favicon_link_tag('logo.png') %>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class="min-h-screen flex flex-col">
     <header id="header">
       <div class="flex justify-center">
@@ -59,10 +57,9 @@
         <%= yield %>
       </main>
     </div>
-    <div class="flex justify-center m-10 p-10 text-xl border-t border-b border-black mt-auto">
+    <div class="flex justify-center mb-5 p-10 text-xl border-t border-b border-black mt-auto">
       <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
     </div>
-  
   </body>
 </html>
 
