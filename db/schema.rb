@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_29_013257) do
+ActiveRecord::Schema.define(version: 2022_12_26_012223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,8 +65,10 @@ ActiveRecord::Schema.define(version: 2022_11_29_013257) do
     t.string "name", null: false
     t.boolean "admin", default: false, null: false
     t.boolean "line_alert", default: true, null: false
-    t.text "ec_login_id"
-    t.text "ec_login_password"
+    t.string "encrypted_ec_login_id"
+    t.string "encrypted_ec_login_id_iv"
+    t.string "encrypted_ec_login_password"
+    t.string "encrypted_ec_login_password_iv"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
