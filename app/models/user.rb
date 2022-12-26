@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :expendable_items, dependent: :destroy
 
+  attr_encrypted :ec_login_id, key: 'This is a key that is 256 bits!!'
+  attr_encrypted :ec_login_password, key: 'This is a key that is 256 bits!!'
+
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: %i[line]
