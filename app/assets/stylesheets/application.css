@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 @media screen and (max-width:767px) {
   .hamburger {
     display : block;
@@ -142,30 +143,6 @@
 .flex-center{
   display: flex;
   justify-content: center;
-}
-.alert-notice{
-  background-color: #7dd3fc;
-  border-color: #0ea5e9;
-  border-width: 1px;
-  text-decoration-color: #0369a1;
-}
-.alert-warn{
-  background-color: #fef9c3;
-  border-color: #fde047;
-  border-width: 1px;
-  text-decoration-color: #eab308;
-}
-.alert-error{
-  background-color: #fca5a5;
-  border-color: #ef4444;
-  border-width: 1px;
-  text-decoration-color: #b91c1c;
-}
-.alert-alert{
-  background-color: #fca5a5;
-  border-color: #ef4444;
-  border-width: 1px;
-  text-decoration-color: #b91c1c;
 }
 .pagination * {
   padding-left: 0.75rem;

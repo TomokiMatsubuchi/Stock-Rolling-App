@@ -54,6 +54,9 @@
       </nav>
     </header>
     <div id="contents">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key} hidden") %>
+      <% end %>
       <main id="main" class="md:border-l-2 md:border-r-2 md:border-black min-h-screen">
         <%= yield %>
       </main>
@@ -61,6 +64,7 @@
     <div class="flex justify-center mb-5 p-10 text-xl border-t border-b border-black mt-auto">
       <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
     </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
