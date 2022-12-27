@@ -163,6 +163,9 @@
 }
 
 @media screen and (min-width:821px){
+  .container{
+    max-width: 1280px;
+  }
   .wrap{
     display: flex;
     flex-wrap: wrap;
@@ -170,6 +173,8 @@
   }
   .wrap-raw{
     width: 28%;
+    margin-left: 0;
+    margin-right: 0;
   }
   .wrap::after{
     content: "";
@@ -271,6 +276,8 @@
   }
   .wrap-raw{
     width: 28%;
+    margin-left: 0;
+    margin-right: 0;
   }
   .wrap::after{
     content: "";

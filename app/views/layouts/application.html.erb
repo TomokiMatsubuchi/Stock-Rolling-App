@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= favicon_link_tag('logo.png') %>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -57,7 +58,7 @@
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key} hidden") %>
       <% end %>
-      <main id="main" class="md:border-l-2 md:border-r-2 md:border-black min-h-screen">
+      <main id="main">
         <%= yield %>
       </main>
     </div>
@@ -66,6 +67,7 @@
     </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
     <script>
       AOS.init();
     </script>

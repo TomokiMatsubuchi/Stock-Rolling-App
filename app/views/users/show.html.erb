@@ -1,25 +1,19 @@
 <h1 class="md:text-8xl text-5xl place-content-center text-center m-5 p-5 border-b border-black ipad-h1">my account</h1>
 
-<div class="container mx-auto">
-  <div class="text-xl md:text-3xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-    <strong><%= t('.name') %>:</strong>
-    <%= @user.name %>
-  </div>
-  <div class="text-xl md:text-3xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-    <strong><%= t('.line_alert') %>:</strong>
-    <%= @user.line_alert ? "あり" : "なし" %>
-  </div>
-  <div class="text-xl md:text-3xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-    <strong><%= t('.connect_auto_buy') %>:</strong>
-    <%= @user.ec_login_id.present? ? "あり" : "なし" %>
-  </div>
+<div class="mx-auto block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
+  <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.name %></p>
+  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.line_alert') %></h5>
+  <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.line_alert ? "あり" : "なし" %></p>
+  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.connect_auto_buy') %></h5>
+  <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.ec_login_id.present? ? "あり" : "なし" %></p>
 
-  <div class="text-xl md:text-2xl p-5 m-5 w-full text-center md:flex md:justify-center">
-    <div class="m-2 p-2 md:m-1 md:p-1 whitespace-nowrap">
-      <%= link_to t('.edit'), edit_user_registration_path, class: "m-2 bg-green-200 text-black py-2 px-2 rounded md:text-xl lg:text-4xl" %>
+  <div class="p-5 m-5 w-full text-center">
+    <div class="my-3 p-3 whitespace-nowrap">
+      <%= link_to t('.edit'), edit_user_registration_path, class: "m-2 bg-green-200 text-black py-2 px-2 rounded" %>
     </div>
-    <div class="m-2 p-2 md:m-1 md:p-1 whitespace-nowrap">
-      <%= link_to t('.delete'), user_registration_path(current_user.id), method: :delete, data: {confirm: '本当にアカウント情報を削除しますか?'}, class: "m-2 bg-red-200 text-black py-2 px-2 rounded md:text-xl lg:text-4xl" %>
+    <div class="my-3 p-3 whitespace-nowrap">
+      <%= link_to t('.delete'), user_registration_path(current_user.id), method: :delete, data: {confirm: '本当にアカウント情報を削除しますか?'}, class: "m-2 bg-red-200 text-black py-2 px-2 rounded" %>
     </div>
   </div>
 </div>
