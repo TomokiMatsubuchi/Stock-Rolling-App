@@ -8,42 +8,37 @@
     </div>
 <% end %>
 <div class="container mx-auto md:flex justify-center p-3">
-  <%= form_with(model: expendable_item, local:true) do |form| %>
-    <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-      <%= form.label :name, t('.name') %>
-      <%= form.text_field :name, class: "border border-black", placeholder: "商品名"%>
+  <%= form_with(model: expendable_item, local:true, class: "max-w-screen-md gap-4 mx-auto") do |form| %>
+    <div>
+      <%= form.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+      <%= form.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "商品名"%>
     </div>
-    <div class="lg:flex">
-      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
-        <%= form.label :amount_of_product, t('.amount_of_product') %>
-        <p class="md:block md:h-8"></p>
-        <%= form.text_field :amount_of_product, class: "border border-black", placeholder: "300" %>
+    <div>
+      <div>
+        <%= form.label :amount_of_product, t('.amount_of_product'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+        <%= form.text_field :amount_of_product, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "300" %>
       </div>
-      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
-        <%= form.label :amount_to_use, t('.amount_to_use') %>
-        <p class="md:block md:h-8"></p>
-        <%= form.text_field :amount_to_use, class: "border border-black", placeholder: "3"  %>
+      <div>
+        <%= form.label :amount_to_use, t('.amount_to_use'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2"  %>
+        <%= form.text_field :amount_to_use, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "3"  %>
       </div>
-      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 text-center">
-        <%= form.label :frequency_of_use, t('.frequency_of_use') %>
-        <p class="block">(1日に何回使用するか)</p>
-        <%= form.text_field :frequency_of_use, class: "border border-black", placeholder: "1" %>
+      <div>
+        <p class="inline-block text-gray-800 text-sm sm:text-base mb-2"><%= form.label :frequency_of_use, t('.frequency_of_use') %>(1日に何回使用するか)</p>
+        <%= form.text_field :frequency_of_use, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "1" %>
       </div>
     </div>
-    <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-      <%= form.label :image, t('.product_image') %>
-      <%= form.file_field :image %>
+    <div>
+      <%= form.label :image, t('.product_image'), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.file_field :image, class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
     </div>
-    <div class="flex">
-      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-        <p class="block h-8"></p>
-        <%= form.label :auto_buy, t('.auto_buy') %>
-        <%= form.check_box :auto_buy, { class: "ml-5 transform scale-150" }, "する", "しない"  %>
+    <div>
+      <div class="flex items-center w-full bg-gray-50 text-gray-800 border border-black focus:ring ring-indigo-300 rounded outline-none transition duration-100 my-4 px-3 py-2 dark:border-gray-700">
+        <%= form.check_box :auto_buy, { class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" }, "する", "しない"  %>
+        <%= form.label :auto_buy, t('.auto_buy'), class: "py-4 ml-2 w-full text-sm font-medium text-gray-800 dark:text-gray-300" %>
       </div>
-      <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-        <p class="md:block md:h-8"></p>
-        <%= form.label :product_url, t('.product_url') %>
-        <%= form.text_field :product_url, class: "border border-black", placeholder: "https://example.com" %>
+      <div>
+        <%= form.label :product_url, t('.product_url'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2"  %>
+        <%= form.text_field :product_url, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "https://example.com" %>
       </div>
     </div>
     <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
