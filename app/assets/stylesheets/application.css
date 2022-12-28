@@ -166,6 +166,15 @@
   text-decoration: #e5e7eb;
   background-color: #e5e7eb;
 }
+.required::after {
+  content: "必須";
+  color: #ffffff;
+  background: #cc0000;
+  font-size: 0.8em;
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin-left:0.3em;
+  }
 
 @media screen and (min-width:821px){
   .container{
