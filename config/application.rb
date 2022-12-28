@@ -17,6 +17,15 @@ module StockRollingApp
 
     I18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}')]
     I18n.default_locale = :ja
+
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        # skip when label
+        html_tag.html_safe
+      else
+        "#{html_tag}<span class=\"font-bold text-red-500\">#{instance.error_message.join}</span>".html_safe
+      end
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

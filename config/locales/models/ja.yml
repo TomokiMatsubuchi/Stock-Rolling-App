@@ -1,8 +1,37 @@
 ja:
   activerecord:
+    errors:
+      models:
+        expendable_item:
+          accepted: 受諾してください。
+          blank: 入力必須項目です。
+          confirmation: "%{attribute}の入力が一致しません。"
+          empty: 入力してください。
+          equal_to: "%{count}にしてください。"
+          even: 偶数にしてください。
+          exclusion: 予約されています。
+          greater_than: "%{count}より大きい値にしてください。"
+          greater_than_or_equal_to: "%{count}以上の値にしてください。"
+          in: "%{count}の範囲に含めてください。"
+          inclusion: 一覧にありません。
+          invalid: 不正な値です。
+          less_than: "%{count}より小さい値にしてください。"
+          less_than_or_equal_to: "%{count}以下の値にしてください。"
+          model_invalid: 'バリデーションに失敗しました。: %{errors}'
+          not_a_number: 数値で入力してください。
+          not_an_integer: 整数で入力してください。
+          odd: 奇数にしてください。
+          other_than: "%{count}以外の値にしてください。"
+          present: 入力しないでください。
+          required: 入力してください。
+          taken: すでに存在します。
+          too_long: "%{count}文字以内で入力してください。"
+          too_short: "%{count}文字以上で入力してください。"
+          wrong_length: "%{count}文字で入力してください。"
     attributes:
       expendable_item:
         name: '商品名'
         amount_of_product: '内容量'
         amount_to_use: '1回で使用する量'
         frequency_of_use: '使用頻度'
+    
