@@ -1,7 +1,7 @@
 ja:
   defaults:
     admin_page: '管理者用ページ'
-    shopping_memo: 'お買い物メモ'
+    shopping_memo: 'お買い物リスト'
     new_expendable_item: '新規消耗品の登録'
     visit_login: 'ログインはこちら'
     add_line: 'LINE友達追加'

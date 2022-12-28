@@ -184,12 +184,6 @@
   .button-size{
     scale: 2;
   }
-  #contents{
-    display: flex;
-    padding-left: 40px;
-    padding-right: 40px;
-    box-sizing: border-box;
-  }
   #main{
     box-sizing: border-box;
     flex: 1;
@@ -216,17 +210,18 @@
     list-style: none;
     display: flex;
     justify-content: center;
-    }
-    
-    nav ul li a{
-    text-decoration: none;
-    color: #FFF;
-    padding:10px;
-    }
-    
-    section{
-    padding:300px 0;
-    }
+  }
+  nav ul li a{
+  text-decoration: none;
+  color: #FFF;
+  padding:10px;
+  }
+  nav ul li a:hover{
+    background-color: #555;
+  }
+  section{
+  padding:300px 0;
+  }
   body{
     margin: 0;
     padding: 0;
@@ -257,17 +252,16 @@
     font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','Franklin Gothic Medium',sans-serif;
     color: gray;
   }
+  .image-bg{
+    background-image: url(image-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 @media screen and (min-width:768px) and (max-width:820px){
   .ipad-h1{
     font-size: 3rem;
-  }
-  #contents{
-    display: block;
-    padding-left: 40px;
-    padding-right: 40px;
-    box-sizing: border-box;
   }
   .wrap{
     display: flex;
@@ -342,5 +336,10 @@
   .background h2{
     font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','Franklin Gothic Medium',sans-serif;
     color: gray;
+  }
+  .image-bg{
+    background-image: url(image-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }

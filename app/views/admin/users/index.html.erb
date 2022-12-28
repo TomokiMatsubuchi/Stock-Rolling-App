@@ -1,23 +1,26 @@
-<h1 class="md:text-8xl text-4xl place-content-center text-center m-3 p-3 border-b border-black ipad-h1">All Acount</h1>
+<h1 class="md:text-8xl text-4xl place-content-center text-center mt-3 p-3 border-b border-black ipad-h1">All Acount</h1>
 
-<div class="container mx-auto wrap p-3">
-  <% @users.each do |user| %>
-    <div class="p-3 h-full wrap-raw mx-auto my-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <div class="p-5">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.name %></p>
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.expendable_items') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.expendable_items.count %></p>
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.line_alert') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.line_alert ? "ON" : "OFF" %></p>
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.connect_auto_buy') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.ec_login_id.present? ? "あり" : "なし" %></p>
-        <div class="text-lg md:text-xl m-2 flex justify-center whitespace-nowrap">
-          <%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: '本当に削除しますか？'}, class: "sm:m-1 bg-red-200 text-black py-2 px-1 rounded sm-admin md:text-2xl lg:text-4xl" %>
+<div class="image-bg md:min-h-screen">
+  <div class="container mx-auto p-3">
+    <div class="container mx-auto wrap p-3">
+      <% @users.each do |user| %>
+        <div class="p-3 h-full wrap-raw mx-auto my-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-5">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
+            <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.name %></p>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.expendable_items') %></h5>
+            <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.expendable_items.count %></p>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.line_alert') %></h5>
+            <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.line_alert ? "ON" : "OFF" %></p>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.connect_auto_buy') %></h5>
+            <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= user.ec_login_id.present? ? "あり" : "なし" %></p>
+            <div class="text-lg md:text-xl m-2 flex justify-center whitespace-nowrap">
+              <%= link_to t('.delete'), admin_user_path(user.id), method: :delete, data: {confirm: '本当に削除しますか？'}, class: "sm:m-1 bg-red-200 text-black py-2 px-1 rounded sm-admin md:text-2xl lg:text-4xl" %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+    <%= paginate @users %>
+  </div>
 </div>
-
-<%= paginate @users %>
