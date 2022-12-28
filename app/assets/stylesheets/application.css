@@ -134,6 +134,11 @@
     font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','Franklin Gothic Medium',sans-serif;
     color: gray;
   }
+  .image-bg{
+    background-image: url(image-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 /*自己実装 */
@@ -153,13 +158,13 @@
   margin-right: 0.5rem;
   text-decoration: #374151;
   text-decoration-line: none;
-  background-color: #d1d5db;
-  border-radius: 0.5rem;
+  background-color: #fff;
+  border-radius: 1.5rem;
 }
 .pagination a:hover{
   font-weight: 600;
   text-decoration: #e5e7eb;
-  background-color: #9ca3af;
+  background-color: #e5e7eb;
 }
 
 @media screen and (min-width:821px){

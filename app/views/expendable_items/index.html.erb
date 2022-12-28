@@ -10,10 +10,10 @@
         <% end %>
         <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
-          <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.name %></p>
+          <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.name %></p>
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.amount_of_product') %></h5>
-          <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.amount_of_product %></p>
-          <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.amount_of_product %></p>
+          <div class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400">
             <%= t('.to_') %>
             <strong class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>

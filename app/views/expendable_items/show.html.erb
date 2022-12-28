@@ -9,15 +9,15 @@
       <% end %>
       <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.name %></p>
+        <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.name %></p>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.amount_of_product') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.amount_of_product %></p>
+        <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.amount_of_product %></p>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.amount_to_use') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.amount_to_use %></p>
+        <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.amount_to_use %></p>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.frequency_of_use') %>(<%= t('.about_frequency') %>)</h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.frequency_of_use %></p>
+        <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.frequency_of_use %></p>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.auto_buy') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.auto_buy %></p>
+        <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @expendable_item.auto_buy %></p>
         <div class="p-5 mx-auto mt-4 w-full text-center">
           <%= link_to t('.reset_reference_day'), expendable_item_path(@expendable_item.id, set_reference_day: true), data: { confirm: '再設定すると以前の消費開始日には戻せませんがよろしいですか?'}, class: "sm:m-2 bg-yellow-200 hover:bg-yellow-100 text-black py-2 px-2 rounded" %>
         </div>

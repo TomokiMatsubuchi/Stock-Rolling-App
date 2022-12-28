@@ -1,13 +1,13 @@
 <h1 class="md:text-8xl text-5xl place-content-center text-center p-5 border-b border-black ipad-h1">my account</h1>
-<div class="image-bg md:min-h-screen">
+<div class="image-bg min-h-screen">
   <div class="container mx-auto p-3">
     <div class="mx-auto block max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
-      <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.name %></p>
+      <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.name %></p>
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.line_alert') %></h5>
-      <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.line_alert ? "あり" : "なし" %></p>
+      <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.line_alert ? "あり" : "なし" %></p>
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.connect_auto_buy') %></h5>
-      <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.ec_login_id.present? ? "あり" : "なし" %></p>
+      <p class="text-center text-xl mb-3 font-normal text-gray-700 dark:text-gray-400"><%= @user.ec_login_id.present? ? "あり" : "なし" %></p>
       <div class="p-5 m-5 w-full text-center md:flex justify-center mx-auto">
         <div class="my-3 p-3 whitespace-nowrap">
           <%= link_to t('.edit'), edit_user_registration_path, class: "m-2 bg-green-200 hover:bg-green-100 text-black py-2 px-2 rounded" %>
