@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_many :expendable_items, dependent: :destroy
 
+  validates :name, presence: true
+  validates :ec_login_id, presence: true, unless: -> { ec_login_password.blank? }
+  validates :ec_login_password, presence: true, unless: -> { ec_login_id.blank? }
+
   attr_encrypted :ec_login_id, key: 'This is a key that is 256 bits!!'
   attr_encrypted :ec_login_password, key: 'This is a key that is 256 bits!!'
 

@@ -175,6 +175,24 @@
   border-radius: 0.5em;
   margin-left:0.3em;
   }
+  .id-required::after {
+    content: "パスワード入力時は必須項目となります。";
+    color: #000;
+    background: yellow;
+    font-size: 0.8em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    margin-left:0.3em;
+    }
+  .password-required::after {
+    content: "ログインID入力時は必須項目となります。";
+    color: #000;
+    background: yellow;
+    font-size: 0.8em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    margin-left:0.3em;
+    }
 
 @media screen and (min-width:821px){
   .container{
