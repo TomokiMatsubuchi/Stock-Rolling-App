@@ -3,10 +3,9 @@
   <div class="container mx-auto p-3">
     <div class="mx-auto block max-w-4xl p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "max-w-screen-md gap-4 mx-auto") do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
         <div>
-          <%= f.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
-          <%= f.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "your name"%>
+          <%= f.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2 required" %>
+          <%= f.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "登録者名"%>
         </div>
         <div class="flex items-center w-full bg-gray-50 text-gray-800 border border-black focus:ring ring-indigo-300 rounded outline-none transition duration-100 my-4 px-3 py-2 dark:border-gray-700">
           <%= f.check_box :line_alert,  class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
@@ -21,11 +20,11 @@
           </div>
         </div>
         <div>
-          <%= f.label :ec_login_id, t('.login_id'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+          <%= f.label :ec_login_id, t('.login_id'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2 id-required" %>
           <%= f.email_field :ec_login_id, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "example@gmail.com" %>
         </div>
         <div>
-          <%= f.label :ec_login_password, t('.password'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+          <%= f.label :ec_login_password, t('.password'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2 password-required" %>
           <%= f.password_field :ec_login_password, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "password" %>
         </div>
         <div class="actions text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
