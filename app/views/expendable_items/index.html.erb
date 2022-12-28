@@ -1,28 +1,32 @@
-<h1 class="md:text-8xl text-4xl place-content-center text-center m-3 p-3 border-b border-black ipad-h1"><%= t('.shopping_index') %></h1>
-<div class="container mx-auto wrap p-3">
-  <% @expendable_items.each do |item| %>
-    <div class="p-3 h-full wrap-raw mx-auto my-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <div class="my-3 flex justify-center">
-        <%= image_tag item.image.variant(resize_to_limit: [100, 100]), class: "rounded-t-lg" if item.image.present? %>
-      </div>
-      <div class="p-5">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.name %></p>
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.amount_of_product') %></h5>
-        <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.amount_of_product %></p>
-        <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          <%= t('.to_') %>
-          <strong class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
-          </strong>
-          <%= t('.day') %>
+<h1 class="md:text-8xl text-4xl place-content-center text-center mt-3 p-3 border-b border-black ipad-h1"><%= t('.shopping_index') %></h1>
+<div class="image-bg">
+  <div class="container mx-auto wrap p-3">
+    <% @expendable_items.each do |item| %>
+      <div class="wrap-raw mx-auto my-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <% if item.image.present? %>
+          <%= image_tag item.image.variant(resize_to_limit: [350, 350]), class: "rounded-t-lg w-full" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: '350x350', class: "rounded-t-lg w-full" %>
+        <% end %>
+        <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.name') %></h5>
+          <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.name %></p>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= t('.amount_of_product') %></h5>
+          <p class="text-center mb-3 font-normal text-gray-700 dark:text-gray-400"><%= item.amount_of_product %></p>
+          <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <%= t('.to_') %>
+            <strong class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <%=  (item.deadline_on - Time.zone.now).to_i / 1.day %>
+            </strong>
+            <%= t('.day') %>
+          </div>
+          <div class="text-lg md:text-xl m-2 flex justify-center whitespace-nowrap">
+            <%= link_to t('.show'), expendable_item_path(item.id), class: "m-2 bg-gray-300 hover:bg-gray-200 font-semibold text-black py-2 px-2 rounded show-item"%>
+            <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'}, class: "m-2 bg-gray-300 hover:bg-gray-200 font-semibold text-black py-2 px-2 rounded destroy-item" %>
+          </div>
         </div>
-        <div class="text-lg md:text-xl m-2 flex justify-center whitespace-nowrap">
-          <%= link_to t('.show'), expendable_item_path(item.id), class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded show-item"%>
-          <%= link_to t('.delete'), expendable_item_path(item.id), method: :delete, data: { confirm: '本当に削除しますか?'}, class: "m-2 bg-gray-300 font-semibold text-black py-2 px-2 rounded destroy-item" %>
-        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%= paginate @expendable_items %>
 </div>
-<%= paginate @expendable_items %>

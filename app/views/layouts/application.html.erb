@@ -54,14 +54,12 @@
         </ul>
       </nav>
     </header>
-    <div id="contents">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key} hidden") %>
-      <% end %>
-      <main id="main">
-        <%= yield %>
-      </main>
-    </div>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key} hidden") %>
+    <% end %>
+    <main id="main">
+      <%= yield %>
+    </main>
     <div class="flex justify-center mb-5 p-10 text-xl border-t border-b border-black mt-auto">
       <p class="text-sm md:text-lg">Product By Tomoki Matsubuchi</p>
     </div>

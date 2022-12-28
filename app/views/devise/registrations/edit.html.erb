@@ -1,40 +1,37 @@
-<h1 class="md:text-8xl text-5xl place-content-center text-center m-5 p-5 border-b border-black ipad-h1">myaccount</h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "max-w-screen-md gap-4 mx-auto") do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="container mx-auto justify-center p-3">
-    <div>
-      <%= f.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
-      <%= f.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "your name"%>
-    </div>
-
-    <div class="flex items-center w-full bg-gray-50 text-gray-800 border border-black focus:ring ring-indigo-300 rounded outline-none transition duration-100 my-4 px-3 py-2 dark:border-gray-700">
-      <%= f.check_box :line_alert,  class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
-      <%= f.label :line_alert, t('.line_alert'), class: "py-4 ml-2 w-full text-sm font-medium text-gray-800 dark:text-gray-300" %>
-    </div>
-
-    <div class="mx-auto flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-      <%= image_tag "netshopping.jpg", class: "object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" %>
-      <div class="flex flex-col justify-between p-4 leading-normal">
-      <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">自動購入連携について(現在はAmazonのみ対応)</h2>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">ECサイトのID(メールアドレス)とパスワードを当アプリに登録することで、自動でECサイトから商品を購入します。</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">登録するECサイトは商品ページのURLに記載したECサイトを登録してください。</p>
-      </div>
-    </div>
-
-    <div>
-      <%= f.label :ec_login_id, t('.login_id'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
-      <%= f.email_field :ec_login_id, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "example@gmail.com" %>
-    </div>
-
-    <div>
-      <%= f.label :ec_login_password, t('.password'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
-      <%= f.password_field :ec_login_password, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "password" %>
-    </div>
-
-    <div class="actions text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-      <%= f.submit t('.updated'), class: "m-3 bg-green-200 text-black py-2 px-4 rounded button-size" %>
+<h1 class="md:text-8xl text-5xl place-content-center text-center mt-5 p-5 border-b border-black ipad-h1">my account</h1>
+<div class="image-bg md:min-h-screen">
+  <div class="container mx-auto p-3">
+    <div class="mx-auto block max-w-4xl p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "max-w-screen-md gap-4 mx-auto") do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div>
+          <%= f.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+          <%= f.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "your name"%>
+        </div>
+        <div class="flex items-center w-full bg-gray-50 text-gray-800 border border-black focus:ring ring-indigo-300 rounded outline-none transition duration-100 my-4 px-3 py-2 dark:border-gray-700">
+          <%= f.check_box :line_alert,  class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+          <%= f.label :line_alert, t('.line_alert'), class: "py-4 ml-2 w-full text-sm font-medium text-gray-800 dark:text-gray-300" %>
+        </div>
+        <div class="mx-auto flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-full dark:border-gray-700 dark:bg-gray-800">
+          <%= image_tag "netshopping.jpg", class: "object-cover sm:w-full rounded-t-lg sm:h-96 md:h-64 md:w-80 md:rounded-none md:rounded-l-lg" %>
+          <div class="flex flex-col justify-between p-4 leading-normal">
+          <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">自動購入連携について(現在はAmazonのみ対応)</h2>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">ECサイトのID(メールアドレス)とパスワードを当アプリに登録することで、自動でECサイトから商品を購入します。</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">登録するECサイトは商品ページのURLに記載したECサイトを登録してください。</p>
+          </div>
+        </div>
+        <div>
+          <%= f.label :ec_login_id, t('.login_id'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+          <%= f.email_field :ec_login_id, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "example@gmail.com" %>
+        </div>
+        <div>
+          <%= f.label :ec_login_password, t('.password'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+          <%= f.password_field :ec_login_password, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "password" %>
+        </div>
+        <div class="actions text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
+          <%= f.submit t('.updated'), class: "m-3 bg-green-200 hover:bg-green-100 text-black py-2 px-4 rounded button-size" %>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>

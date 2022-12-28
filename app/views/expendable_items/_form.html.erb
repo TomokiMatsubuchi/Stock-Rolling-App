@@ -1,52 +1,47 @@
-<% if expendable_item.errors.any? %>
-    <div id="error_explanation" class = "text-xl md:text-2xl bg-red-300 font-boild text-black text-center ">
-      <ul>
-        <% expendable_item.errors.full_messages.each do |msg| %>
-          <li class="p-2 md:p-3"><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-<% end %>
-<div class="container mx-auto md:flex justify-center p-3">
-  <%= form_with(model: expendable_item, local:true, class: "max-w-screen-md gap-4 mx-auto") do |form| %>
-    <div>
-      <%= form.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
-      <%= form.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "商品名"%>
-    </div>
-    <div>
-      <div>
-        <%= form.label :amount_of_product, t('.amount_of_product'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
-        <%= form.text_field :amount_of_product, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "300" %>
-      </div>
-      <div>
-        <%= form.label :amount_to_use, t('.amount_to_use'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2"  %>
-        <%= form.text_field :amount_to_use, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "3"  %>
-      </div>
-      <div>
-        <p class="inline-block text-gray-800 text-sm sm:text-base mb-2"><%= form.label :frequency_of_use, t('.frequency_of_use') %>(1日に何回使用するか)</p>
-        <%= form.text_field :frequency_of_use, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "1" %>
-      </div>
-    </div>
-    <div>
-      <%= form.label :image, t('.product_image'), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-      <%= form.file_field :image, class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
-    </div>
-    <div>
-      <div class="flex items-center w-full bg-gray-50 text-gray-800 border border-black focus:ring ring-indigo-300 rounded outline-none transition duration-100 my-4 px-3 py-2 dark:border-gray-700">
-        <%= form.check_box :auto_buy, { class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" }, "する", "しない"  %>
-        <%= form.label :auto_buy, t('.auto_buy'), class: "py-4 ml-2 w-full text-sm font-medium text-gray-800 dark:text-gray-300" %>
-      </div>
-      <div>
-        <%= form.label :product_url, t('.product_url'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2"  %>
-        <%= form.text_field :product_url, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "https://example.com" %>
-      </div>
-    </div>
-    <div class="text-lg md:text-2xl p-2 md:p-5 m-2 md:m-5 w-full text-center">
-      <% if expendable_item.id == nil %>
-        <%= form.submit t('.submit.create'), class: "m-3 bg-blue-200 text-black py-2 px-4 rounded button-size" %>
-      <% else %>
-        <%= form.submit t('.submit.update'), class: "m-3 bg-green-200 text-black py-2 px-4 rounded button-size" %>
+<div class="image-bg md:min-h-screen">
+  <div class="container mx-auto p-3">
+    <div class="p-5 mx-auto my-10 block max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <%= form_with(model: expendable_item, local:true, class: "max-w-screen-md gap-4 mx-auto") do |form| %>
+        <div>
+          <%= form.label :name, t('.name'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+          <%= form.text_field :name, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "商品名"%>
+        </div>
+        <div>
+          <div>
+            <%= form.label :amount_of_product, t('.amount_of_product'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2" %>
+            <%= form.text_field :amount_of_product, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "300" %>
+          </div>
+          <div>
+            <%= form.label :amount_to_use, t('.amount_to_use'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2"  %>
+            <%= form.text_field :amount_to_use, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "3"  %>
+          </div>
+          <div>
+            <p class="inline-block text-gray-800 text-sm sm:text-base mb-2"><%= form.label :frequency_of_use, t('.frequency_of_use') %>(1日に何回使用するか)</p>
+            <%= form.text_field :frequency_of_use, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "1" %>
+          </div>
+        </div>
+        <div>
+          <%= form.label :image, t('.product_image'), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= form.file_field :image, class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+        </div>
+        <div>
+          <div class="flex items-center w-full bg-gray-50 text-gray-800 border border-black focus:ring ring-indigo-300 rounded outline-none transition duration-100 my-4 px-3 py-2 dark:border-gray-700">
+            <%= form.check_box :auto_buy, { class: "w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" }, "する", "しない"  %>
+            <%= form.label :auto_buy, t('.auto_buy'), class: "py-4 ml-2 w-full text-sm font-medium text-gray-800 dark:text-gray-300" %>
+          </div>
+          <div>
+            <%= form.label :product_url, t('.product_url'), class: "inline-block text-gray-800 text-sm sm:text-base mb-2"  %>
+            <%= form.text_field :product_url, class: "w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2", placeholder: "https://example.com" %>
+          </div>
+        </div>
+        <div class="text-lg md:text-2xl p-2 md:p-5 mx-auto mt-4 w-full text-center">
+          <% if expendable_item.id == nil %>
+            <%= form.submit t('.submit.create'), class: "m-3 bg-blue-200 hover:bg-blue-100 text-black py-2 px-4 rounded button-size" %>
+          <% else %>
+            <%= form.submit t('.submit.update'), class: "m-3 bg-green-200 hover:bg-green-100 text-black py-2 px-4 rounded button-size" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
