@@ -23,7 +23,7 @@ module StockRollingApp
         # skip when label
         html_tag.html_safe
       else
-        "#{html_tag}<span class=\"font-bold text-red-500\">#{instance.error_message.join}</span>".html_safe
+        "<div class=\"has_error\">#{html_tag}<span class=\"font-bold text-red-500\">#{instance.error_message.join}</span></div>".html_safe
       end
     end
     # Settings in config/environments/* take precedence over those specified here.

@@ -1,7 +1,7 @@
 FROM ruby:3.0.1
 
-ARG RAILS_MASTER_KEY
-ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+#ARG RAILS_MASTER_KEY
+#ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 RUN apt-get update -qq && apt-get install -y postgresql-client
 WORKDIR /StockRollingApp
@@ -21,7 +21,7 @@ RUN bundle config set force_ruby_platform true
 RUN bundle install
 
 
-RUN bundle exec rails assets:precompile RAILS_ENV=production
+#RUN bundle exec rails assets:precompile RAILS_ENV=production
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/

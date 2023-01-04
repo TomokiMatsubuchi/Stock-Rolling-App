@@ -193,6 +193,9 @@
     border-radius: 0.5em;
     margin-left:0.3em;
     }
+  .has_error input{
+    border-color: #cc0000;
+  }
 
 @media screen and (min-width:821px){
   .container{
