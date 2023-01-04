@@ -13,7 +13,7 @@ class BuyAmazonJob < ApplicationJob
     Selenium::WebDriver.logger.level = :warn
 
     options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
+    #options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--window-size=1280x800')
@@ -33,43 +33,12 @@ class BuyAmazonJob < ApplicationJob
         if amazon_login(user) != false
           limit_items.each do |item|
             if item.auto_buy = "する"
-              begin
-                @driver.get(item.product_url)
-                buy = @driver.find_element(:id, 'buy-now-button')
-                buy.submit
-                sleep 5
-                buy = @driver.find_element(:name, 'proceedToRetailCheckout')
-                buy.submit
-                sleep 5
-                buy = @driver.find_element(:name, 'placeYourOrder1')
-                buy.click
-                sleep 5
-                if @driver.title.include? "ありがとうございました"
-                  message = {
-                    type: 'text',
-                    text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
-                  }
-                  line_message(user, message)
-                  send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
-                  @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text
-                  amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
-                  deadline_on = reference_day(send_date).since(amount_of_day.days)
-                  item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
-                else
-                  message = {
-                    type: 'text',
-                    text: "なんらかの不具合により自動購入できませんでした。"
-                  }
-                  line_message(user, message)
-                end
-              rescue
-                logger.info "Amazon購入にて障害発生"
-              end
+              buy_item(item, user)
             end
           end
         end
         sleep 5
-        logout = @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout')
+        @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout') #logout
         sleep 5
       end
     end
@@ -105,6 +74,38 @@ class BuyAmazonJob < ApplicationJob
       end
     else
       false
+    end
+  end
+
+  def buy_item(item, user)
+    begin
+      @driver.get(item.product_url)
+      @driver.find_element(:id, 'buy-now-button').submit
+      sleep 5
+      @driver.find_element(:name, 'proceedToRetailCheckout').submit
+      sleep 5
+      @driver.find_element(:name, 'placeYourOrder1').click
+      sleep 5
+      if @driver.title.include? "ありがとうございました"
+        message = {
+          type: 'text',
+          text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
+        }
+        line_message(user, message)
+        send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
+        @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text
+        amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
+        deadline_on = reference_day(send_date).since(amount_of_day.days)
+        item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
+      else
+        message = {
+          type: 'text',
+          text: "なんらかの不具合により自動購入できませんでした。"
+        }
+        line_message(user, message)
+      end
+    rescue
+      logger.info "Amazon購入にて障害発生"
     end
   end
 
