@@ -30,7 +30,6 @@ class LinebotController < ApplicationController
         message = shopping_list(send_limit_item(user))
       elsif event.message['text'].include?("自動購入機能テスト")
         message = test_selenium(user)
-        binding.pry
       end
 
       case event
