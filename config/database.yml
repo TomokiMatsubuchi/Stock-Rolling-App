@@ -19,9 +19,9 @@ default: &default
   encoding: unicode
   
   #docker内のdbと接続するための記述
-  #host: db
-  #username: user1
-  #password: <%= ENV["DB_PASSWORD"] %>
+  host: db
+  username: user1
+  password: <%= ENV["DB_PASSWORD"] %>
 
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling

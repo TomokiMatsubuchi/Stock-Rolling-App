@@ -26,6 +26,7 @@ class LinebotController < ApplicationController
       user = User.where(uid: user_id)[0]
       if event.message['text'].include?("お買い物リスト")
         message = shopping_list(send_limit_item(user))
+        binding.pry
       end
 
       case event
