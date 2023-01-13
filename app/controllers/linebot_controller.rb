@@ -1,11 +1,54 @@
-require "selenium-webdriver"
 require 'line/bot'
+require "selenium-webdriver"
 
-class BuyAmazonJob < ApplicationJob
-  queue_as :default
+class LinebotController < ApplicationController
+  include LinebotHelper
+  # callbackアクションのCSRFトークン認証を無効
+  protect_from_forgery :except => [:callback]
+  
+  def client
+    @client ||= Line::Bot::Client.new { |config|
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    }
+  end
 
-  def perform(*args)
+  def callback
+    body = request.body.read
 
+    signature = request.env['HTTP_X_LINE_SIGNATURE']
+    unless client.validate_signature(body, signature)
+      error 400 do 'Bad Request' end
+    end
+
+    events = client.parse_events_from(body)
+
+    events.each { |event|
+      user_id = event['source']['userId']
+      user = User.where(uid: user_id)[0]
+      if event.message['text'].include?("お買い物リスト")
+        message = shopping_list(send_limit_item(user))
+      elsif event.message['text'].include?("自動購入機能テスト")
+        message = test_selenium(user)
+        binding.pry
+      end
+
+      case event
+      # メッセージが送信された場合
+      when Line::Bot::Event::Message
+        case event.type
+        # メッセージが送られて来た場合
+        when Line::Bot::Event::MessageType::Text
+          client.reply_message(event['replyToken'], message)
+        end
+      end
+    }
+
+    head :ok
+  end
+
+  private
+  def test_selenium(user)
     @wait_time = 10 
     @timeout = 180
 
@@ -25,27 +68,27 @@ class BuyAmazonJob < ApplicationJob
     @driver.manage.timeouts.implicit_wait = @timeout
     wait = Selenium::WebDriver::Wait.new(timeout: @wait_time)
 
-    users = User.all
-    users.each do |user|
-      limit_seven_days = Date.today..Time.now.end_of_day + (7.days)
-      limit_items =  ExpendableItem.where(user_id: user.id).where(deadline_on: limit_seven_days)
-      if limit_items != []
-        if amazon_login(user) != false
-          limit_items.each do |item|
-            if item.auto_buy = "する"
-              buy_item(item, user)
-            end
-          end
-        end
-        sleep 5
-        @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout') #logout
-        sleep 5
-      end
+    if amazon_login(user) != false
+      sleep 5
+      @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout') #logout
+      sleep 5
+      @driver.quit
+      response = {
+        type: 'text',
+        text: "正常にテストが完了しました。"
+      }
+    else
+      sleep 5
+      @driver.get('https://www.amazon.co.jp/gp/flex/sign-out.html?path=%2Fgp%2Fyourstore%2Fhome&signIn=1&useRedirectOnSuccess=1&action=sign-out&ref_=nav_AccountFlyout_signout') #logout
+      sleep 5
+      @driver.quit
+      response = {
+        wrap: true,
+        type: 'text',
+        text: "何らかの障害によりテストが失敗しました。\n初回利用の場合はamazonより届く\nメールからブラウザを信用する設定をしてください。"
+      }
     end
-    @driver.quit
   end
-  
-  private
 
   def amazon_login(user)
     if user.ec_login_id.present? && user.ec_login_password.present?
@@ -69,64 +112,10 @@ class BuyAmazonJob < ApplicationJob
           login?(user)
         end
       rescue
-        logger.info "Amazonログインにて障害発生"
         false
       end
     else
       false
-    end
-  end
-
-  def buy_item(item, user)
-    begin
-      @driver.get(item.product_url)
-      @driver.find_element(:id, 'buy-now-button').submit
-      sleep 5
-      @driver.find_element(:name, 'proceedToRetailCheckout').submit
-      sleep 5
-      @driver.find_element(:name, 'placeYourOrder1').click
-      sleep 5
-      if @driver.title.include? "ありがとうございました"
-        message = {
-          type: 'text',
-          text: "#{item.name}の購入が完了しました。ecサイトにて注文履歴をご確認ください。"
-        }
-        line_message(user, message)
-        send_date = @driver.find_element(:id, 'delivery-promise-orderGroupID0#itemGroupID0').find_element(:class, 'break-word').text.split[0]
-        @driver.find_element(:id, 'nav-link-accountList-nav-line-1').text
-        amount_of_day = item.amount_of_product /  item.amount_to_use / item.frequency_of_use
-        deadline_on = reference_day(send_date).since(amount_of_day.days)
-        item.update(deadline_on: deadline_on, reference_date: reference_day(send_date))
-      else
-        message = {
-          type: 'text',
-          text: "なんらかの不具合により自動購入できませんでした。"
-        }
-        line_message(user, message)
-      end
-    rescue
-      logger.info "Amazon購入にて障害発生"
-    end
-  end
-
-  def line_message(user, message)
-    client = Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-    }
-    if user.line_alert == true
-      response = client.push_message(user.uid, message)
-    end
-  end
-
-  def reference_day(send_date)
-    year = Date.current.year
-    month_day = send_date.scan(/\d+/)
-    reference_day = "#{year}-#{month_day.join('-')}".to_date
-    if reference_day < Date.current
-      reference_day.years_since(1)
-    else
-      reference_day
     end
   end
 

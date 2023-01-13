@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :about_app, only: [:index]
 
+  post '/callback' => 'linebot#callback'
+
   authenticate :user do #authenticate
     mount Sidekiq::Web => '/sidekiq'
   end
